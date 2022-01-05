@@ -57,20 +57,20 @@ UC2: Deploy a simple application (petclinic)
 
 - try to scale the application and observe that RHACM synchronize the application back to the stage defined in Git
 
-UC3: Add a root depending on target environment (use kustomize)
+UC3: Add a specific route for each target environment (use kustomize)
 ---------------------------------------------------------------
 TBD
 
 - the base folder describes everything common
 - the dev and prod folders define the specificities
 
-UC4: managing secrets
----------------------
+UC4: managing secrets (sealed secrets)
+-------------------------------------
 
 TBD
 
 UC5: use Towe for non kubernetes config
----------------------------
+---------------------------------------
 
 
 security\
