@@ -4,7 +4,7 @@
       name: petclinic-dev-subscription
       namespace: petclinic-lifecycle
       annotations:
-        apps.open-cluster-management.io/git-path: deployables/apps/apps-group1/app1
+        apps.open-cluster-management.io/git-path: deployables/apps/apps-group1/app1/base
         apps.open-cluster-management.io/git-branch: main
       labels:
         app: petclinic
