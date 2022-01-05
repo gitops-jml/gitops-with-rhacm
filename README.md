@@ -6,34 +6,21 @@ GitOps is a declarative approach to **continuous delivery** that uses Git as the
 
 Concepts & Architecture
 =====================
-Argo CD automates the deployment of the desired application states (yaml,kustomize,helm, ...) in the specified target environments (kubernetes clusters) and keep them synchronized 
+RHACM can be used to automates the deployment of applications in target environments (kubernetes clusters) and keep them synchronized 
 
-The main concept is the **application** (CRD) that defines the source of the manifests to deploy (path in a Git repositoy), the destination to deploy to (kubernetes cluster namespace) and the sync options
+The main concepts are (CRD):
 
-Application can be grouped by **projects**.
+**Cluster Hub**
+**managed cluster**
 
-About Openshift GitOps
+**application** (CRD) that defines the source of the manifests to deploy (path in a Git repositoy), the destination to deploy to (kubernetes cluster namespace) and the sync options
+**channel**
+**subscription**
+**placementrule**
+
+Installing RHACM
 =====================
-**Openshift GitOps** is RedHat implementation framework for GitOps, built on **Argo CD** (CNCF project)
-
-
-Installing Openshift GitOps
-=====================
-- Openshift GitOps is available as an operator (**Red Hat OpenShift GitOps**) in the OperatorHub
-
-![Image](./images/Operator.jpg)
-
-- Installing the operator will create a default ArgoCD instance and a default project in the openshift-gitops namespace.
-
-![Image](./images/init.jpg)
-
-- use oc command to obtain ArgoCD console pasword:\
-`oc extract secret/openshift-gitops-cluster -n openshift-gitops --to=-`
-
-- open the ArgoCD console in your browser:\
-(you can use the menu link that was added by the operator on top of OCP console)
-
-![Image](./images/ArgoCDlink.jpg)
+- RHACM is available as an operator in the OperatorHub
 
 Simple use cases
 =====================
