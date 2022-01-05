@@ -30,7 +30,7 @@ repository architecture:
 ![Image](./images/tree.jpg)
 
   - rhacm-def folder contains the descriptions of the various RHACM CRD
-  - apps folder contains everything needed to deploy applications (deployables)
+  - deployables folder contains everything needed to deploy applications
 
 Pre-req to play with this workshop
 ----------------------------------
