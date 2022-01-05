@@ -29,9 +29,8 @@ repository architecture:
 ------------------------
 ![Image](./images/tree.jpg)
 
-  - argo folders contain the descriptions of the various Argo CRD (applications and projects)
-  - config folders contain everything related to OCP platform configuration
-  - apps folders contain everything needed to deploy applications
+  - rhacm-def folder contains the descriptions of the various RHACM CRD
+  - apps folder contains everything needed to deploy applications (deployables)
 
 Pre-req to play with this workshop
 ----------------------------------
@@ -58,17 +57,12 @@ Then verifiy that a new link to ARgoCd documentation is added to the OCP console
 
 UC2: Deploy a simple application (petclinic)
 ---------------------------
-- look at  [PetClinicArgoApp.yaml](./argo/apps-def/PetClinic/PetClinicArgoApp.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
+- look at  xxxxxxx
 
-- create a new ArcoCD application from this file\
-`cd gitops; oc apply -f argo/apps-def/PetClinic/PetClinicArgoApp.yaml`
+- create the RHACM CR from files\
+`cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f apps1`
 
-- look at the new Application in ArgoCD console.\
-For this application the Sync mode is automatic so you don't have to use the Sync button
-
-![Image](./images/petclinic-outofsync.jpg)
-
-- wait for the application to sync and watch the resources creation from the ArgoCD console
+- wait for the application to deploy and watch the resources creation from the RHACM console
 
 ![Image](./images/petclinic-sync.jpg)
 
@@ -76,7 +70,7 @@ For this application the Sync mode is automatic so you don't have to use the Syn
 
 ![Image](./images/petclinic.jpg)
 
-- try to scale the application and observe that ArgoCD synchronize the application back to the stage defined in Git
+- try to scale the application and observe that RHACM synchronize the application back to the stage defined in Git
 
 UC3: Add rook-ceph storage to the cluster
 ---------------------------
