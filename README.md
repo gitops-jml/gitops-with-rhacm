@@ -2,7 +2,7 @@ GitOps exploration
 =====================
 GitOps is a declarative approach to **continuous delivery** that uses Git as the single source of truth for everything (infrastructure and application)
 
-![Image](./images/DeliveryModel.jpg)
+![Image](./images/DeliveryModel.png)
 
 Concepts & Architecture
 =====================
