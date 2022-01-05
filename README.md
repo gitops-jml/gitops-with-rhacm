@@ -13,10 +13,10 @@ The main concepts are (CRD):
 - **Cluster Hub** : the central cluster that manage all the deployments
 - **managed cluster** : the clusters where the applications are deployed to
 
-- **application** : that defines the group of subscriptions that participate to the application to deploy
-- **channels** : that defines the git repositories
-- **subscription** : that defines the subset of manifests in a channel that defines the kubernetes objects to deploy
-- **placementrule** : that defines the target cluster selection rules
+- **applications** : that define the groups of subscriptions that participate to each application to deploy
+- **channels** : that define the git repositories
+- **subscriptions** : that define the subset of manifests in a channel that defines the kubernetes objects to deploy
+- **placementrules** : that define the target cluster selection rules
 
 Installing RHACM
 =====================
