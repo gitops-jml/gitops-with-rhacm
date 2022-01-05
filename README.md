@@ -10,13 +10,13 @@ RHACM can be used to automates the deployment of applications in target environm
 
 The main concepts are (CRD):
 
-- **Cluster Hub**
-- **managed cluster**
+- **Cluster Hub** : the central cluster that manage all the deployments
+- **managed cluster** : the clusters where the applications are deployed to
 
-- **application** (CRD) that defines the source of the manifests to deploy (path in a Git repositoy), the destination to deploy to (kubernetes cluster namespace) and the sync options
-- **channel**
-- **subscription**
-- **placementrule**
+- **application** : that defines the group of subscriptions that participate to the application to deploy
+- **channels** : that defines the git repositories
+- **subscription** : that defines the subset of manifests in a channel that defines the kubernetes objects to deploy
+- **placementrule** : that defines the target cluster selection rules
 
 Installing RHACM
 =====================
@@ -25,15 +25,18 @@ Installing RHACM
 Simple use cases
 =====================
 
-Pre-req
----------------------------
-- fork and then clone the current repository in your environment
-
+repository architecture:
+------------------------
 ![Image](./images/tree.jpg)
 
   - argo folders contain the descriptions of the various Argo CRD (applications and projects)
   - config folders contain everything related to OCP platform configuration
   - apps folders contain everything needed to deploy applications
+
+Pre-req to play with this workshop
+----------------------------------
+- fork and then clone the current repository
+
 
 UC1: Add a link to the OCP Console
 ---------------------------
