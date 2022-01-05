@@ -10,13 +10,13 @@ RHACM can be used to automates the deployment of applications in target environm
 
 The main concepts are (CRD):
 
-**Cluster Hub**
-**managed cluster**
+- **Cluster Hub**
+- **managed cluster**
 
-**application** (CRD) that defines the source of the manifests to deploy (path in a Git repositoy), the destination to deploy to (kubernetes cluster namespace) and the sync options
-**channel**
-**subscription**
-**placementrule**
+- **application** (CRD) that defines the source of the manifests to deploy (path in a Git repositoy), the destination to deploy to (kubernetes cluster namespace) and the sync options
+- **channel**
+- **subscription**
+- **placementrule**
 
 Installing RHACM
 =====================
