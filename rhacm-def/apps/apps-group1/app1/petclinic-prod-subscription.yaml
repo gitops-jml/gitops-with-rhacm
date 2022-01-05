@@ -1,0 +1,22 @@
+    apiVersion: apps.open-cluster-management.io/v1
+    kind: Subscription
+    metadata:
+      name: petclinic-prod-subscription
+      namespace: petclinic-lifecycle
+      annotations:
+        apps.open-cluster-management.io/git-path: deployables/petclinic/prod
+        apps.open-cluster-management.io/git-branch: main
+      labels:
+        app: petclinic
+        env: Prod
+    spec:
+      channel: petclinic-lifecycle/petclinic-channel
+      placement:
+        placementRef:
+          kind: PlacementRule
+          name: petclinic-prod-placement-rule
+      overrides:
+      - clusterName: "/"
+        clusterOverrides:
+        - path: "metadata.namespace"
+          value: petclinic-prod
