@@ -1,0 +1,15 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: petclinic-dev-placement-rule
+  namespace: petclinic-lifecycle
+  labels:
+    app: petclinic
+    env: Dev
+    group: group1
+spec:
+  clusterSelector:
+    matchLabels:
+      app: petclinic
+      environment: Dev
+  clusterReplicas: 1

@@ -1,0 +1,23 @@
+    apiVersion: apps.open-cluster-management.io/v1
+    kind: Subscription
+    metadata:
+      name: petclinic-dev-subscription
+      namespace: petclinic-lifecycle
+      annotations:
+        apps.open-cluster-management.io/git-path: deployables/apps/apps-group1/app1/base
+        apps.open-cluster-management.io/git-branch: main
+      labels:
+        app: petclinic
+        env: Dev
+        group: group1
+    spec:
+      channel: rhacm-channels/petclinic-channel
+      placement:
+        placementRef:
+          kind: PlacementRule
+          name: petclinic-dev-placement-rule
+      overrides:
+      - clusterName: "/"
+        clusterOverrides:
+        - path: "metadata.namespace"
+          value: petclinic-dev
