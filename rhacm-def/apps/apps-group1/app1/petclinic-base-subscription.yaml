@@ -1,7 +1,7 @@
     apiVersion: apps.open-cluster-management.io/v1
     kind: Subscription
     metadata:
-      name: petclinic-dev-subscription
+      name: petclinic-base-subscription
       namespace: petclinic-lifecycle
       annotations:
         apps.open-cluster-management.io/git-path: deployables/apps/apps-group1/app1/base
@@ -15,7 +15,7 @@
       placement:
         placementRef:
           kind: PlacementRule
-          name: petclinic-placement-rule
+          name: petclinic-base-placement-rule
       overrides:
       - clusterName: "/"
         clusterOverrides:

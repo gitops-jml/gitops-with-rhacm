@@ -4,7 +4,7 @@ metadata:
   labels:
     app: petclinic
     env: base
-  name: petclinic-dev-appli
+  name: petclinic-base-appli
   namespace: petclinic-lifecycle
 spec:
   componentKinds:
