@@ -3,6 +3,7 @@ kind: Application
 metadata:
   labels:
     app: petclinic
+    env: dev
   name: petclinic-dev-appli
   namespace: petclinic-lifecycle
 spec:
@@ -12,4 +13,4 @@ spec:
   selector:
     matchLabels:
       app: petclinic
-      env: Dev
+      env: dev

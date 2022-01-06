@@ -5,11 +5,11 @@ metadata:
   namespace: petclinic-lifecycle
   labels:
     app: petclinic
-    env: Dev
+    env: dev
     group: group1
 spec:
   clusterSelector:
     matchLabels:
       app: petclinic
-      environment: Dev
+      environment: dev
   clusterReplicas: 1
