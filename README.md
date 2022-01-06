@@ -39,7 +39,10 @@ Cluster Hub namespaces
 
 Pre-req to play with this workshop
 ----------------------------------
+You need two clusters: one as the hub cluster which will hosts RHACM, the other as a managed cluster to deploy the applications
 - fork and clone the current repository on your laptop
+- install RHACM on the Hub Cluster : RHACM is available as an operator in the OperatorHub ; to complete the install, create a multiclusterhub instance
+- import the managed cluster intot the Hub Cluster
 - on the Hub Cluster, create a namespace to hold the channels definitions\
 `oc new-project rhacm-channels`
 - on the Hub Cluster, create a secret to access to the git repository\
@@ -64,9 +67,11 @@ This folder contains the definitions for a kubernetes deployment and a service (
 - create the RHACM Custom resources for app1 from files\
 `cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f petclinic-channel.yaml; oc apply -f apps1`
 
-- wait for the application to deploy on the target cluster and watch the resources creation from the RHACM console
+- watch the resources creation from the RHACM console : as the placement rule is looking for a cluster with an app and an env labels that it can't find yet, the application is not deployed
+- label the managed cluster with app=petclinic and env=Dev
+- observe the deployment on the RHACM console and on the target cluster
 
-![Image](./images/petclinic-sync.jpg)
+![Image](./images/petclinic1.jpg)
 
 - try to scale the application up and observe that RHACM synchronizes the application back to the stage defined in Git
 
