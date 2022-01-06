@@ -71,7 +71,7 @@ This folder contains the definitions for a kubernetes deployment and a service (
 ![Image](./images/petclinic1.jpg)
 - label the managed cluster with `app=petclinic` and `environment=Dev`
 - observe the deployment on the RHACM console and on the target cluster
-
+![Image](./images/petclinic2.jpg)\
 
 
 - try to scale the application up and observe that RHACM synchronizes the application back to the stage defined in Git
