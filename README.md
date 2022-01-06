@@ -6,14 +6,13 @@ GitOps is a declarative approach to **continuous delivery** that uses Git as the
 
 Concepts & Architecture
 =====================
-RHACM can be used to automates the deployment of applications in target environments (kubernetes clusters) and keep them synchronized 
+RHACM can be used to automate the deployment of applications in target environments (kubernetes clusters) and keep them synchronized 
 
 The main concepts are (CRD):
 
 - **Cluster Hub** : the central cluster that manage all the deployments
 - **managed cluster** : the clusters where the applications are deployed to
-
-
+\
 - **applications** : that define the groups of subscriptions that participate to each application to deploy
 - **channels** : that define the git repositories
 - **subscriptions** : that define the subset of manifests in a channel that defines the kubernetes objects to deploy
