@@ -69,7 +69,7 @@ This folder contains the definitions for a kubernetes deployment and a service (
 
 - watch the resources creation from the RHACM console : as the placement rule is looking for a cluster with an app and an environment labels that it can't find yet, the application is not deployed\
 ![Image](./images/petclinic1.jpg)
-- label the managed cluster with `app=petclinic` and `environment=Dev`
+- label the managed cluster with `app=petclinic` and `environment=dev`
 - observe the deployment on the RHACM console and on the target cluster
 ![Image](./images/petclinic2.jpg)\
 
@@ -83,6 +83,12 @@ To be able to deploy a unique application to several different environments with
 In our use case ( gitops-with-rhacm/deployables/apps/apps-group1/app1 )
 - the **base** folder describes everything common : the different manifests and a kustomization.yaml file that lists the ones to deploy
 - the **dev** and **prod** folders define the specificities (the routes in our case) and a kustomization.yaml file describing the base location and the list of specifics
+
+- create the RHACM Custom resources for app1 from files\
+`cd gitops-with-rhacm/rhacm-def/apps/apps-group1/app2; oc apply -f petclinic-prod-appli.yaml ; oc apply -f petclinic-prod-subscription.yaml ; oc apply -f petclinic-prod-placement-rule.yaml`
+- repeat with *prod*
+- observe the deployments in RHACM console and target clusters
+- test the routes
 
 UC4: managing secrets (sealed secrets)
 -------------------------------------
