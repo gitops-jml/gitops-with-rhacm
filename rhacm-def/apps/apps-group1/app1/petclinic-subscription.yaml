@@ -8,16 +8,16 @@
         apps.open-cluster-management.io/git-branch: main
       labels:
         app: petclinic
-        env: Dev
+        env: base
         group: group1
     spec:
       channel: rhacm-channels/petclinic-channel
       placement:
         placementRef:
           kind: PlacementRule
-          name: petclinic-dev-placement-rule
+          name: petclinic-placement-rule
       overrides:
       - clusterName: "/"
         clusterOverrides:
         - path: "metadata.namespace"
-          value: petclinic-dev
+          value: petclinic-base
