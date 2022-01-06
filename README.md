@@ -30,14 +30,20 @@ repository architecture:
 ------------------------
 ![Image](./images/tree.jpg)
 
-  - rhacm-def folder contains the descriptions of the various RHACM CRD
+  - rhacm-def folder contains the descriptions of the various RHACM Custom resources
   - deployables folder contains everything needed to deploy applications
+
+Cluster Hub namespaces
+----------------------
+- opencluster-management:
 
 Pre-req to play with this workshop
 ----------------------------------
-- fork and then clone the current repository
-- create a secret to access to the git repository\
-`oc create secret generic git-secret --from-literal=user=xxxxxxx --from-literal=accessToken=xxxxxxxx`
+- fork and clone the current repository on your laptop
+- on the Hub Cluster, create a namspace to hold the channels definitions\
+`oc new-project rhacm-channels`
+- on the Hub Cluster, create a secret to access to the git repository\
+`oc create secret generic git-secret --from-literal=user=xxxxxxx --from-literal=accessToken=xxxxxxxx -n rhacm-channels`
 
 
 UC1: Add a link to the OCP Console (Config)
@@ -47,16 +53,17 @@ TBD
 
 UC2: Deploy a simple application (petclinic)
 --------------------------------------------
-- look at gitops-with-rhacm/rhacm-def/apps/apps-group1 folder
+- look at gitops-with-rhacm/rhacm-def/apps/apps-group1 folder\
+This folder contains the RHAACM channels definitions for the group of applications and all the RHACM custom resources definitions for all the applications of the group
 
-- create the RHACM CR from files\
+- create the RHACM Custom resources for app1 from files\
 `cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f petclinic-channel.yaml; oc apply -f apps1`
 
-- wait for the application to deploy and watch the resources creation from the RHACM console
+- wait for the application to deploy on the target cluster and watch the resources creation from the RHACM console
 
 ![Image](./images/petclinic-sync.jpg)
 
-- try to scale the application and observe that RHACM synchronize the application back to the stage defined in Git
+- try to scale the application up and observe that RHACM synchronizes the application back to the stage defined in Git
 
 UC3: Add a specific route for each target environment (use kustomize)
 ---------------------------------------------------------------
