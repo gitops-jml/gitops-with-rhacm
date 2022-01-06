@@ -40,7 +40,7 @@ Cluster Hub namespaces
 Pre-req to play with this workshop
 ----------------------------------
 - fork and clone the current repository on your laptop
-- on the Hub Cluster, create a namspace to hold the channels definitions\
+- on the Hub Cluster, create a namespace to hold the channels definitions\
 `oc new-project rhacm-channels`
 - on the Hub Cluster, create a secret to access to the git repository\
 `oc create secret generic git-secret --from-literal=user=xxxxxxx --from-literal=accessToken=xxxxxxxx -n rhacm-channels`
@@ -56,6 +56,9 @@ UC2: Deploy a simple application (petclinic)
 - look at gitops-with-rhacm/rhacm-def/apps/apps-group1 folder\
 This folder contains the RHAACM channels definitions for the group of applications and all the RHACM custom resources definitions for all the applications of the group
 
+- look at gitops-with-rhacm/deployables/apps/apps-group1/app1/base\
+This folder contains the definitions for a kubernetes deployment and a service (you can ignore the kustomization.yaml for the moment)
+
 - create the RHACM Custom resources for app1 from files\
 `cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f petclinic-channel.yaml; oc apply -f apps1`
 
@@ -67,10 +70,11 @@ This folder contains the RHAACM channels definitions for the group of applicatio
 
 UC3: Add a specific route for each target environment (use kustomize)
 ---------------------------------------------------------------
-TBD
+To be able to deploy a unique application to several different environments without to duplicate yaml files, we will use **kustomize** which can build a set of yaml files based on a specific directory structure separating what is common from what is specific.
 
-- the base folder describes everything common
-- the dev and prod folders define the specificities
+In our use case ( gitops-with-rhacm/deployables/apps/apps-group1/app1 )
+- the **base** folder describes everything common : the different manifests and a kustomization.yaml file that lists the ones to deploy
+- the **dev** and **prod** folders define the specificities (the routes in our case) and a kustomization.yaml file describing the base location and the list of specifics
 
 UC4: managing secrets (sealed secrets)
 -------------------------------------
