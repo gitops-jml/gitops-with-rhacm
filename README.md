@@ -37,7 +37,7 @@ Pre-req to play with this workshop
 ----------------------------------
 - fork and then clone the current repository
 - create a secret to access to the git repository\
-`TBD`
+`oc create secret generic git-secret --from-literal=user=jmlafont --from-literal=accessToken=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`
 
 
 UC1: Add a link to the OCP Console (Config)
