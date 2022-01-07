@@ -19,6 +19,8 @@ The main concepts are (CRD):
 - **subscriptions** : that define the subset of manifests in a channel that defines the kubernetes objects to deploy
 - **placementrules** : that define the target cluster selection rules
 
+![Image](./images/application-model.jpg)
+
 Installing RHACM
 =====================
 - RHACM is available as an operator in the OperatorHub
