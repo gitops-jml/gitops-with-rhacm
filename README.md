@@ -78,16 +78,19 @@ This folder contains the definitions for a kubernetes deployment and a service (
 
 UC3: Add a specific route for each target environment (use kustomize)
 ---------------------------------------------------------------
+In this use case, we will deploy the same application than for use case 2, but in several environments (dev and prod) with a custom route for each of them.
+
 To be able to deploy a unique application to several different environments without to duplicate yaml files, we will use **kustomize** which can build a set of yaml files based on a specific directory structure separating what is common from what is specific.
 
 In our use case ( gitops-with-rhacm/deployables/apps/apps-group1/app1 )
 - the **base** folder describes everything common : the different manifests and a kustomization.yaml file that lists the ones to deploy
 - the **dev** and **prod** folders define the specificities (the routes in our case) and a kustomization.yaml file describing the base location and the list of specifics
 
-- create the RHACM Custom resources for app1 from files\
+- create the RHACM Custom resources for app2 from files\
 `cd gitops-with-rhacm/rhacm-def/apps/apps-group1/app2; oc apply -f petclinic-prod-appli.yaml ; oc apply -f petclinic-prod-subscription.yaml ; oc apply -f petclinic-prod-placement-rule.yaml`
-- repeat with *prod*
-- observe the deployments in RHACM console and target clusters
+- repeat with *prod* manifests
+- change the value of the environment label for the managed cluster, using dev or prod
+- observe the deployments in RHACM console and target clusters, depending of the label value
 - test the routes
 
 UC4: managing secrets (sealed secrets)
