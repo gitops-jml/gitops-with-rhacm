@@ -106,6 +106,10 @@ We will encrypt our Secret into a SealedSecret, which is safe to store - even to
 UC5: use Towe for non kubernetes config
 ---------------------------------------
 
+UC6: Deploy CP4I
+---------------------------------------
+`oc apply -k CP4I/`
+
 
 security\
 order dependent deployments\
