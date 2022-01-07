@@ -109,7 +109,7 @@ UC5: use Towe for non kubernetes config
 UC6: Deploy CP4I
 ---------------------------------------
 `oc apply -k CP4I/`
-
+`oc apply -k CP4I/operators`
 
 security\
 order dependent deployments\
