@@ -4,11 +4,11 @@
       name: petclinic-prod-subscription
       namespace: petclinic-lifecycle
       annotations:
-        apps.open-cluster-management.io/git-path: deployables/petclinic/prod
+        apps.open-cluster-management.io/git-path: deployables/apps/apps-group1/app2/prod
         apps.open-cluster-management.io/git-branch: main
       labels:
         app: petclinic
-        env: Prod
+        env: prod
     spec:
       channel: petclinic-lifecycle/petclinic-channel
       placement:
