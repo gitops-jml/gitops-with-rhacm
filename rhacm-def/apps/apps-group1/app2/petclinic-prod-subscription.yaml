@@ -4,13 +4,13 @@
       name: petclinic-prod-subscription
       namespace: petclinic-lifecycle
       annotations:
-        apps.open-cluster-management.io/git-path: deployables/apps/apps-group1/app2/prod
+        apps.open-cluster-management.io/git-path: deployables/apps/apps-group1/app1/prod
         apps.open-cluster-management.io/git-branch: main
       labels:
         app: petclinic
         env: prod
     spec:
-      channel: petclinic-lifecycle/petclinic-channel
+      channel: rhacm-channels/petclinic-channel
       placement:
         placementRef:
           kind: PlacementRule
