@@ -98,6 +98,8 @@ For private Git repositories, we need a secret to hold the credentials (user/acc
 
 To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/sealed-secrets )
 
+We will encrypt our Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
+
 
 UC5: use Towe for non kubernetes config
 ---------------------------------------
