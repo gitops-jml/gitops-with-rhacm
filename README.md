@@ -42,7 +42,7 @@ You need two clusters:
 - one as the hub cluster which will host RHACM,
 - the other as a managed cluster to deploy the applications
 
-
+execute the following steps:
 - fork and clone the current repository on your laptop
 - install RHACM on the Hub Cluster : RHACM is available as an operator in the OperatorHub ;  Complete the installation by creating a multiclusterhub instance
 - import the managed cluster into the Hub Cluster
