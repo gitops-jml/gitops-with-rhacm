@@ -51,7 +51,9 @@ You need two clusters: one as the hub cluster which will hosts RHACM, the other 
 
 UC1: Add a link to the OCP Console (Config)
 -------------------------------------------
-TBD
+For private Git repositories, we need a secret to hold the credentials (user/accessToken). As secrets are not encrypted, it's impossible to store these secrets in a repository.
+
+To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/sealed-secrets )
 
 
 UC2: Deploy a simple application (petclinic)
