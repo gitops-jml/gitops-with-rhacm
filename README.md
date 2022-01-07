@@ -4,8 +4,8 @@ GitOps is a declarative approach to **continuous delivery** that uses Git as the
 
 ![Image](./images/DeliveryModel.png)
 
-Concepts & Architecture
-=====================
+Concepts
+========
 RHACM can be used to automate the deployment of applications in target environments (kubernetes clusters) and keep them synchronized 
 
 The main concepts are (CRD):
@@ -21,13 +21,8 @@ The main concepts are (CRD):
 
 ![Image](./images/application-model.jpg)
 
-Installing RHACM
-=====================
-- RHACM is available as an operator in the OperatorHub
-
-Simple use cases
-=====================
-
+Architecture
+============
 repository architecture:
 ------------------------
 ![Image](./images/tree.jpg)
@@ -38,18 +33,26 @@ repository architecture:
 Cluster Hub namespaces
 ----------------------
 - opencluster-management:
+- rhacm-channels:
+- one namespace for each application definitions
 
 Pre-req to play with this workshop
-----------------------------------
-You need two clusters: one as the hub cluster which will hosts RHACM, the other as a managed cluster to deploy the applications
+==================================
+You need two clusters:
+- one as the hub cluster which will host RHACM,
+- the other as a managed cluster to deploy the applications
+
+
 - fork and clone the current repository on your laptop
-- install RHACM on the Hub Cluster : RHACM is available as an operator in the OperatorHub ; to complete the install, create a multiclusterhub instance
-- import the managed cluster intot the Hub Cluster
-- on the Hub Cluster, create a namespace to hold the channels definitions\
+- install RHACM on the Hub Cluster : RHACM is available as an operator in the OperatorHub ;  Complete the installation by creating a multiclusterhub instance
+- import the managed cluster into the Hub Cluster
+- on the Hub Cluster, create a namespace to hold the channels definitions (TO BE AUTOMATED)\
 `oc new-project rhacm-channels`
 - on the Hub Cluster, create a secret to access to the git repository\
 `oc create secret generic git-secret --from-literal=user=xxxxxxx --from-literal=accessToken=xxxxxxxx -n rhacm-channels`
 
+Simple use cases
+=====================
 
 UC1: Add a link to the OCP Console (Config)
 -------------------------------------------
@@ -58,7 +61,7 @@ TBD
 UC2: Deploy a simple application (petclinic)
 --------------------------------------------
 - look at gitops-with-rhacm/rhacm-def/apps/apps-group1 folder\
-This folder contains the RHAACM channels definitions for the group of applications and all the RHACM custom resources definitions for all the applications of the group
+This folder contains the RHACM channels definitions for the group of applications and all the RHACM custom resources definitions for all the applications of the group
 
 - look at gitops-with-rhacm/deployables/apps/apps-group1/app1/base\
 This folder contains the definitions for a kubernetes deployment and a service (you can ignore the kustomization.yaml for the moment)
