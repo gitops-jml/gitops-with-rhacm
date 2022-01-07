@@ -9,7 +9,7 @@
       labels:
         app: ibm-operator-catalog
     spec:
-      channel: cp4i-channels/cp4i-channel
+      channel: rhacm-channels/cp4i-channel
       placement:
         placementRef:
           kind: PlacementRule

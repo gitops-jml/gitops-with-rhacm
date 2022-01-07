@@ -2,7 +2,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: Channel
 metadata:
   name: cp4i-channel
-  namespace: cp4i-channels
+  namespace: rhacm-channels
 spec:
   type: Git
   pathname: https://github.com/gitops-jml/gitops-with-rhacm.git

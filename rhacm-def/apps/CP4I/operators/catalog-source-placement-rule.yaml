@@ -1,13 +1,12 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: catalogu-source-placement-rule
+  name: catalog-source-placement-rule
   namespace: cp4i
   labels:
     app: ibm-operator-catalog 
-    pak: cp4i
 spec:
   clusterSelector:
     matchLabels:
-      cp4i: yes
+      cp4i: "yes"
   clusterReplicas: 1

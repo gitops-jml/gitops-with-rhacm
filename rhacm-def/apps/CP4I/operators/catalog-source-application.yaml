@@ -2,7 +2,6 @@ apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
   labels:
-    pak: cp4i
     app: ibm-operator-catalog
   name: ibm-operator-catalog
   namespace: cp4i
@@ -12,5 +11,4 @@ spec:
     kind: Subscription
   selector:
     matchLabels:
-      pak: cp4i
       app: ibm-operator-catalog
