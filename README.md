@@ -111,8 +111,8 @@ UC5: use Towe for non kubernetes config
 
 UC6: Deploy CP4I
 ---------------------------------------
-`oc apply -k CP4I/`
-`oc apply -k CP4I/operators`
+`oc apply -k CP4I` : creation of the channel for CP4I
+`oc apply -k CP4I/operators` : creation of the catalog source and operators for CP4I
 
 security\
 order dependent deployments\
