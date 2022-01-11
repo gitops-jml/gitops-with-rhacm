@@ -69,11 +69,11 @@ This folder contains the definitions for a kubernetes deployment and a service (
 - create a namespace to host the custom resources definitions for the application
 `oc new-project petclinic-lifecycle`
 - create the RHACM Custom resources for app1 from files\
-`cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f petclinic-channel.yaml; oc apply -f apps1`
+`cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f petclinic-channel.yaml; oc apply -f app1`
 
 - watch the resources creation from the RHACM console : as the placement rule is looking for a cluster with an app and an environment labels that it can't find yet, the application is not deployed\
 ![Image](./images/petclinic1.jpg)
-- label the managed cluster with `app=petclinic` and `environment=dev`
+- label the managed cluster with `app=petclinic` and `environment=base`
 - observe the deployment on the RHACM console and on the target cluster
 ![Image](./images/petclinic2.jpg)\
 
@@ -111,8 +111,8 @@ UC5: use Towe for non kubernetes config
 
 UC6: Deploy CP4I
 ---------------------------------------
-`oc apply -k CP4I/`
-`oc apply -k CP4I/operators`
+`oc apply -k CP4I` : creation of the channel\
+`oc apply -k CP4I/operators` : creation of the catalog source and operators RHACM custo resources
 
 security\
 order dependent deployments\
