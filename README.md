@@ -69,7 +69,7 @@ This folder contains the definitions for a kubernetes deployment and a service (
 - create a namespace to host the custom resources definitions for the application
 `oc new-project petclinic-lifecycle`
 - create the RHACM Custom resources for app1 from files\
-`cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f petclinic-channel.yaml; oc apply -f apps1`
+`cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f petclinic-channel.yaml; oc apply -f app1`
 
 - watch the resources creation from the RHACM console : as the placement rule is looking for a cluster with an app and an environment labels that it can't find yet, the application is not deployed\
 ![Image](./images/petclinic1.jpg)
