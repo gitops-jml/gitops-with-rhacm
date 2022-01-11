@@ -73,7 +73,7 @@ This folder contains the definitions for a kubernetes deployment and a service (
 
 - watch the resources creation from the RHACM console : as the placement rule is looking for a cluster with an app and an environment labels that it can't find yet, the application is not deployed\
 ![Image](./images/petclinic1.jpg)
-- label the managed cluster with `app=petclinic` and `environment=dev`
+- label the managed cluster with `app=petclinic` and `environment=base`
 - observe the deployment on the RHACM console and on the target cluster
 ![Image](./images/petclinic2.jpg)\
 
