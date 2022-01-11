@@ -32,9 +32,9 @@ repository architecture:
 
 Cluster Hub namespaces
 ----------------------
-- opencluster-management:
-- rhacm-channels:
-- one namespace for each application definitions
+- opencluster-management: created by default for RHACM
+- rhacm-channels: to be created to host the channel(s) definition
+- one namespace to be created for each application definitions
 
 Pre-req to play with this workshop
 ==================================
