@@ -3,3 +3,6 @@ resources:
 - catalog-source-application.yaml
 - catalog-source-subscription.yaml
 - catalog-source-placement-rule.yaml
+- cp4i-application.yaml
+- cp4i-subscription.yaml
+- cp4i-placement-rule.yaml
