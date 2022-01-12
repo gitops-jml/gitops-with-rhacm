@@ -1,0 +1,25 @@
+apiVersion: apiconnect.ibm.com/v1beta1
+kind: APIConnectCluster
+metadata:
+  name: apicluster
+  labels:
+    app.kubernetes.io/instance: apiconnect
+    app.kubernetes.io/managed-by: ibm-apiconnect
+    app.kubernetes.io/name: apicluster
+  namespace: cp4i
+spec:
+  license:
+    accept: true
+    use: "nonproduction"
+  profile: "n3xc4.m16"
+  version: "10.0.1.4-eus"
+  storageClassName: "rook-ceph-block"
+  management:
+    testAndMonitor:
+      enabled: "true"
+  gateway:      
+    tokenManagementService:
+      enabled: "true"
+      storage:
+        storageClassName: "rook-ceph-block"
+
