@@ -1,0 +1,21 @@
+    apiVersion: apps.open-cluster-management.io/v1
+    kind: Subscription
+    metadata:
+      name: cp4i-apic-instance-subscription
+      namespace: cp4i
+      annotations:
+        apps.open-cluster-management.io/git-path: deployables/apps/CP4I/instances/apic
+        apps.open-cluster-management.io/git-branch: main
+      labels:
+        app: cp4i-operator
+    spec:
+      channel: rhacm-channels/cp4i-channel
+      placement:
+        placementRef:
+          kind: PlacementRule
+          name: cp4i-placement-rule
+      overrides:
+      - clusterName: "/"
+        clusterOverrides:
+        - path: "metadata.namespace"
+          value: openshift-operators

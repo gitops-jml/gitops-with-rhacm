@@ -1,2 +1,2 @@
 resources:
-- cp4i-apic-instance-subscription.yaml
+- cp4i-apic-cluster-subscription.yaml
