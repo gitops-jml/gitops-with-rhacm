@@ -4,7 +4,7 @@
       name: cp4i-operatorgroup-subscription
       namespace: cp4i
       annotations:
-        apps.open-cluster-management.io/git-path: deployables/apps/CP4I/operators/cp4i
+        apps.open-cluster-management.io/git-path: deployables/apps/CP4I/operators/cp
         apps.open-cluster-management.io/git-branch: main
       labels:
         app: cp4i-operator
