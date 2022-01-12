@@ -5,5 +5,5 @@ resources:
 - catalog-source-placement-rule.yaml
 - cp4i-application.yaml
 - cp4i-operatorgroup-subscription.yaml
-- cp4i-cp-operator-subscription.yaml
+- cp4i-cp-integration-operator-subscription.yaml
 - cp4i-placement-rule.yaml
