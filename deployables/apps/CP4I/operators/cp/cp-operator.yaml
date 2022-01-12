@@ -4,7 +4,7 @@ metadata:
   name: ibm-cp-integration
   namespace: cp4i
 spec:
-  channel: v1.3
+  channel: v1.5
   name: ibm-cp-integration
   source: ibm-operator-catalog
   sourceNamespace: openshift-marketplace
