@@ -26,6 +26,7 @@ Architecture
 repository architecture:
 ------------------------
 ![Image](./images/tree.jpg)
+![Image](./images/tree2.jpg)
 
   - rhacm-def folder contains the descriptions of the various RHACM Custom resources
   - deployables folder contains everything needed to deploy applications
