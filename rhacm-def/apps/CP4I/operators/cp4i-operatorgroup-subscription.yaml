@@ -1,10 +1,10 @@
     apiVersion: apps.open-cluster-management.io/v1
     kind: Subscription
     metadata:
-      name: cp4i-operator-subscription
+      name: cp4i-operatorgroup-subscription
       namespace: cp4i
       annotations:
-        apps.open-cluster-management.io/git-path: deployables/apps/CP4I/operators
+        apps.open-cluster-management.io/git-path: deployables/apps/CP4I/operatorgroup
         apps.open-cluster-management.io/git-branch: main
       labels:
         app: cp4i-operator
@@ -13,7 +13,7 @@
       placement:
         placementRef:
           kind: PlacementRule
-          name: catalog-source-placement-rule
+          name: cp4i-placement-rule
       overrides:
       - clusterName: "/"
         clusterOverrides:
