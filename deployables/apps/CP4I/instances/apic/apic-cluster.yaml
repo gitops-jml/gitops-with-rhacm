@@ -13,7 +13,7 @@ spec:
     use: "nonproduction"
     license: L-RJON-C7BHW9
   profile: "n1xc10.m48"
-  version: "10.0.4.0"
+  version: "10.0.1.4-eus"
   storageClassName: "rook-ceph-block"
   management:
     testAndMonitor:
