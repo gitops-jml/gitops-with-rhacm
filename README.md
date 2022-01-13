@@ -112,8 +112,11 @@ UC5: use Towe for non kubernetes config
 
 UC6: Deploy CP4I
 ---------------------------------------
-`oc apply -k CP4I` : creation of the channel\
-`oc apply -k CP4I/operators` : creation of the catalog source and operators RHACM custo resources
+- create the channel\
+`oc apply -k CP4I`
+- create the RHACM custo resources for operators\
+`oc apply -k CP4I/operators`
+- create the RHACM custo resources for operators\
 
 security\
 order dependent deployments\
