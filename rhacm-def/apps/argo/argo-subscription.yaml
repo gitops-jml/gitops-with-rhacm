@@ -1,0 +1,21 @@
+    apiVersion: apps.open-cluster-management.io/v1
+    kind: Subscription
+    metadata:
+      name: argo-subscription
+      namespace: rhacm-def
+      annotations:
+        apps.open-cluster-management.io/git-path: deployables/apps/argo
+        apps.open-cluster-management.io/git-branch: main
+      labels:
+        app: argoCD
+    spec:
+      channel: rhacm-channels/argo-channel
+      placement:
+        placementRef:
+          kind: PlacementRule
+          name: argo-placement-rule
+      overrides:
+      - clusterName: "/"
+        clusterOverrides:
+        - path: "metadata.namespace"
+          value: openshift-gitops
