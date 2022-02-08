@@ -6,5 +6,5 @@ metadata:
 spec:
   type: Git
   pathname: https://github.com/gitops-jml/gitops-with-rhacm.git
-  secretRef:
-    name: git-secret
+#  secretRef:
+#    name: git-secret
