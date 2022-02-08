@@ -9,7 +9,7 @@
       labels:
         app: argoCD
     spec:
-      channel: argo-channel
+      channel: rhacm-def/argo-channel
       placement:
         placementRef:
           kind: PlacementRule
