@@ -1,3 +1,6 @@
 resources:
-- namespace.yaml
-- cp4i-channel.yaml
+- 1-namespace.yaml
+- 2-cp4i-channel.yaml
+- 3-cp4i-application.yaml
+- 4-cp4i-placement-rule.yaml
+- catalogs/catalog-source-subscription.yaml

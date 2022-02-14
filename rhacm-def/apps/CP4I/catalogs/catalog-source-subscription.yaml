@@ -7,13 +7,13 @@
         apps.open-cluster-management.io/git-path: deployables/apps/CP4I/catalog-source
         apps.open-cluster-management.io/git-branch: main
       labels:
-        app: ibm-operator-catalog
+        app: cp4i
     spec:
       channel: rhacm-channels/cp4i-channel
       placement:
         placementRef:
           kind: PlacementRule
-          name: catalog-source-placement-rule
+          name: cp4i-placement-rule
       overrides:
       - clusterName: "/"
         clusterOverrides:
