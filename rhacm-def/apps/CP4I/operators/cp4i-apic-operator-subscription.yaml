@@ -5,9 +5,9 @@
       namespace: cp4i
       annotations:
         apps.open-cluster-management.io/git-path: deployables/apps/CP4I/operators/apic
-        apps.open-cluster-management.io/git-branch: main
+        apps.open-cluster-management.io/git-branch: lisa
       labels:
-        app: cp4i-operator
+        app: cp4i
     spec:
       channel: rhacm-channels/cp4i-channel
       placement:

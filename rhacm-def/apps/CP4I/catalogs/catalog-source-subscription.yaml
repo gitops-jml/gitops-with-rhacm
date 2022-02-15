@@ -5,7 +5,7 @@
       namespace: cp4i
       annotations:
         apps.open-cluster-management.io/git-path: deployables/apps/CP4I/catalog-source
-        apps.open-cluster-management.io/git-branch: main
+        apps.open-cluster-management.io/git-branch: lisa
       labels:
         app: cp4i
     spec:
