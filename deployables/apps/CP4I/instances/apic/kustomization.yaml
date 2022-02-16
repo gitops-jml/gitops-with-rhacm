@@ -1,2 +1,3 @@
 resources:
 - apic-management-cluster.yaml
+- ingress-issuer.yaml

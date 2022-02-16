@@ -1,7 +1,7 @@
 resources:
-- 1-namespace.yaml
-- 2-cp4i-channel.yaml
-- 3-cp4i-application.yaml
-- 4-cp4i-placement-rule.yaml
+- namespace.yaml
+- cp4i-channel.yaml
+- cp4i-application.yaml
+- cp4i-placement-rule.yaml
 - catalogs/catalog-source-subscription.yaml
-- operators/cp4i-apic-operator-subscription.yaml
+#- operators/cp4i-apic-operator-subscription.yaml
