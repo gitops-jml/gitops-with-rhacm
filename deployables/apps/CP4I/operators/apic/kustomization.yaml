@@ -1,4 +1,4 @@
 resources:
-- namespace
+- namespace.yaml
 - common-services-operand-request.yaml
 - apic-operator.yaml
