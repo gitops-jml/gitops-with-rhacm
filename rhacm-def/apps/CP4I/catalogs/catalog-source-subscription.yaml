@@ -9,7 +9,7 @@
       labels:
         app: cp4i
     spec:
-      channel: rhacm-channels/cp4i-channel
+      channel: cp4i-rhacm-manifests/cp4i-channel
       placement:
         placementRef:
           kind: PlacementRule
