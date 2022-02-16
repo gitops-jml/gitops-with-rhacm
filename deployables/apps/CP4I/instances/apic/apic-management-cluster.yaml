@@ -1,0 +1,60 @@
+apiVersion: management.apiconnect.ibm.com/v1beta1
+kind: ManagementCluster
+metadata:
+  name: management
+  labels:  
+    app.kubernetes.io/instance: management
+    app.kubernetes.io/managed-by: ibm-apiconnect
+    app.kubernetes.io/name: management
+  namespace: cp4i
+spec:
+  version: 10.0.1.5-ifix3-eus
+#  imagePullSecrets:
+#  - {{ image_pull_secret_name }}
+#  imageRegistry: {{ image_registry }}
+  profile: n1xc4.m16
+  portal:
+    admin:
+      secretName: portal-admin-client
+  analytics:
+    client:
+      secretName: analytics-client-client
+    ingestion:
+      secretName: analytics-ingestion-client
+  gateway:
+    client:
+      secretName: gateway-client-client
+  cloudManagerEndpoint:
+    annotations:
+      certmanager.k8s.io/issuer: ingress-issuer
+    hosts: 
+    - name: cm.wr.apps.target.cp.fyre.ibm.com
+      secretName: cm-endpoint
+  apiManagerEndpoint:
+    annotations:
+      certmanager.k8s.io/issuer: ingress-issuer
+    hosts: 
+    - name: apim.wr.apps.target.cp.fyre.ibm.com
+      secretName: apim-endpoint
+  platformAPIEndpoint:
+    annotations:
+      certmanager.k8s.io/issuer: ingress-issuer
+    hosts: 
+    - name: api.wr.apps.target.cp.fyre.ibm.com
+      secretName: api-endpoint
+  consumerAPIEndpoint:
+    annotations:
+      certmanager.k8s.io/issuer: ingress-issuer
+    hosts: 
+    - name: consumer.wr.apps.target.cp.fyre.ibm.com
+      secretName: consumer-endpoint
+  databaseVolumeClaimTemplate:
+    storageClassName: rook-ceph-block
+  microServiceSecurity: certManager
+  certManagerIssuer:
+    name: selfsigning-issuer
+    kind: Issuer
+  license:
+    accept: true
+    use: nonproduction
+
