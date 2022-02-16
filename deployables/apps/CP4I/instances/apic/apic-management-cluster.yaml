@@ -28,25 +28,25 @@ spec:
     annotations:
       certmanager.k8s.io/issuer: ingress-issuer
     hosts: 
-    - name: cm.wr.apps.target.cp.fyre.ibm.com
+    - name: cm.wr.apps.managed.cp.fyre.ibm.com
       secretName: cm-endpoint
   apiManagerEndpoint:
     annotations:
       certmanager.k8s.io/issuer: ingress-issuer
     hosts: 
-    - name: apim.wr.apps.target.cp.fyre.ibm.com
+    - name: apim.wr.apps.managed.cp.fyre.ibm.com
       secretName: apim-endpoint
   platformAPIEndpoint:
     annotations:
       certmanager.k8s.io/issuer: ingress-issuer
     hosts: 
-    - name: api.wr.apps.target.cp.fyre.ibm.com
+    - name: api.wr.apps.managed.cp.fyre.ibm.com
       secretName: api-endpoint
   consumerAPIEndpoint:
     annotations:
       certmanager.k8s.io/issuer: ingress-issuer
     hosts: 
-    - name: consumer.wr.apps.target.cp.fyre.ibm.com
+    - name: consumer.wr.apps.managed.cp.fyre.ibm.com
       secretName: consumer-endpoint
   databaseVolumeClaimTemplate:
     storageClassName: rook-ceph-block
