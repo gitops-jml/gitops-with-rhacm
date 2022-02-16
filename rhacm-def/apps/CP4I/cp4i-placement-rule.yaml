@@ -2,7 +2,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: cp4i-placement-rule
-  namespace: cp4i
+  namespace: cp4i-rhacm-manifests
   labels:
     app: cp4i
 spec:

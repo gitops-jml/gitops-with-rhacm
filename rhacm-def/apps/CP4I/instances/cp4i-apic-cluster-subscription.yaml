@@ -2,14 +2,14 @@
     kind: Subscription
     metadata:
       name: cp4i-apic-instance-subscription
-      namespace: cp4i
+      namespace: cp4i-rhacm-manifests
       annotations:
         apps.open-cluster-management.io/git-path: deployables/apps/CP4I/instances/apic
         apps.open-cluster-management.io/git-branch: lisa
       labels:
         app: cp4i
     spec:
-      channel: rhacm-channels/cp4i-channel
+      channel: cp4i-rhacm-manifests/cp4i-channel
       placement:
         placementRef:
           kind: PlacementRule

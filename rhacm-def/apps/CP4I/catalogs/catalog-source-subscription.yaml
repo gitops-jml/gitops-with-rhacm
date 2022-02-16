@@ -2,7 +2,7 @@
     kind: Subscription
     metadata:
       name: ibm-operator-catalog-subscription
-      namespace: cp4i
+      namespace: cp4i-rhacm-manifests
       annotations:
         apps.open-cluster-management.io/git-path: deployables/apps/CP4I/catalog-source
         apps.open-cluster-management.io/git-branch: lisa

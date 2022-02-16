@@ -4,7 +4,7 @@ metadata:
   labels:
     app: cp4i
   name: cp4i
-  namespace: cp4i
+  namespace: cp4i-rhacm-manifests
 spec:
   componentKinds:
   - group: apps.open-cluster-management.io
