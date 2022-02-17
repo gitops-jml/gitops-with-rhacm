@@ -2,7 +2,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: Channel
 metadata:
   name: petclinic-channel
-  namespace: rhacm-channels
+  namespace: petclinic-lifecycle
 spec:
   type: Git
   pathname: https://github.com/gitops-jml/gitops-with-rhacm.git
