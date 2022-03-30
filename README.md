@@ -68,7 +68,7 @@ This folder contains the RHACM definitions for the application
 This folder contains the definitions for a kubernetes deployment and a service (you can ignore the kustomization.yaml for the moment)
 
 - create a namespace to host the custom resources definitions for the application
-`oc new-project petclinic-lifecycle`
+`oc new-project petclinic`
 - create the RHACM Custom resources for app1 from files\
 `cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f petclinic`
 
