@@ -92,7 +92,7 @@ In our use case ( gitops-with-rhacm/deployables/apps/apps-group1/petclinic )
 - the **dev** and **prod** folders define the specificities (the routes in our case) and a kustomization.yaml file describing the base location and the list of specifics
 
 - create the RHACM Custom resources from files\
-`cd gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic/; oc apply -f dev
+`cd gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic/; oc apply -f dev`
 - repeat with *prod* manifests in prod folder
 - change the value of the environment label for the managed cluster, using dev or prod
 - observe the deployments in RHACM console and target clusters, depending of the label value
