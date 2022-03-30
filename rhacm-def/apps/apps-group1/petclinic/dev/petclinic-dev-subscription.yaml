@@ -2,9 +2,9 @@
     kind: Subscription
     metadata:
       name: petclinic-dev-subscription
-      namespace: petclinic-lifecycle
+      namespace: petclinic
       annotations:
-        apps.open-cluster-management.io/git-path: deployables/apps/apps-group1/app1/dev
+        apps.open-cluster-management.io/git-path: deployables/apps/apps-group1/petclinic/dev
         apps.open-cluster-management.io/git-branch: main
       labels:
         app: petclinic
@@ -16,8 +16,8 @@
         placementRef:
           kind: PlacementRule
           name: petclinic-dev-placement-rule
-      overrides:
-      - clusterName: "/"
-        clusterOverrides:
-        - path: "metadata.namespace"
-          value: petclinic-dev
+#      overrides:
+#      - clusterName: "/"
+#        clusterOverrides:
+#        - path: "metadata.namespace"
+#          value: petclinic-dev
