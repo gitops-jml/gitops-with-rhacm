@@ -61,16 +61,16 @@ TBD
 
 UC2: Deploy a simple application (petclinic)
 --------------------------------------------
-- look at gitops-with-rhacm/rhacm-def/apps/apps-group1 folder\
-This folder contains the RHACM channels definitions for the group of applications and all the RHACM custom resources definitions for all the applications of the group
+- look at gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic folder\
+This folder contains the RHACM definitions for the application
 
-- look at gitops-with-rhacm/deployables/apps/apps-group1/app1/base\
+- look at gitops-with-rhacm/deployables/apps/apps-group1/petclinic/base\
 This folder contains the definitions for a kubernetes deployment and a service (you can ignore the kustomization.yaml for the moment)
 
 - create a namespace to host the custom resources definitions for the application
 `oc new-project petclinic-lifecycle`
 - create the RHACM Custom resources for app1 from files\
-`cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f petclinic-channel.yaml; oc apply -f app1`
+`cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f petclinic`
 
 - watch the resources creation from the RHACM console : as the placement rule is looking for a cluster with an app and an environment labels that it can't find yet, the application is not deployed\
 ![Image](./images/petclinic1.jpg)
