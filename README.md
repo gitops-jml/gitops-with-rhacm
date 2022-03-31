@@ -107,8 +107,11 @@ To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/s
 We will encrypt our Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
 
 
-UC5: use Towe for non kubernetes config
+UC5: using Tower for pre or post hooks
 ---------------------------------------
+- install Ansible Automation Platform Resource Operator
+- create a crendential for Tower ( https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html/credentials/credentials#creating-a-credential-for-ansible )
+- 
 
 UC6: Deploy CP4I
 ---------------------------------------
