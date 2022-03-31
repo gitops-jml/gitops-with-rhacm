@@ -110,9 +110,21 @@ We will encrypt our Secret into a SealedSecret, which is safe to store - even to
 UC5: using Tower for pre or post hooks
 ---------------------------------------
 - install Ansible Automation Platform Resource Operator
+- create a namespace to host the credentials\
+`oc new-project rhacm-credentials`
 - create a crendential for Tower ( https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html/credentials/credentials#creating-a-credential-for-ansible )
-- 
-
+- create a secret in the same namespace as the subscription
+`
+apiVersion: v1
+kind: Secret
+metadata:
+  name: toweraccess
+  namespace: same-as-subscription
+type: Opaque
+stringData:
+  token: ansible-tower-api-token
+  host: https://ansible-tower-host-url
+`
 UC6: Deploy CP4I
 ---------------------------------------
 - create the channel\
