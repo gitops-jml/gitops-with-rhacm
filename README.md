@@ -127,7 +127,7 @@ stringData:
 - look at the posthook directory under gitops-with-rhacm/deployables/apps/apps-group1/petclinic/prod. This is the definition of the job that will be launched after the deployment of the subscription
 - create the RHACM Custom resources for a new prod application from files\
 `cd gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic/; oc apply -f prod`
-
+- change the environment label value from dev to prod on managed cluster
 
 UC6: Deploy CP4I
 ---------------------------------------
