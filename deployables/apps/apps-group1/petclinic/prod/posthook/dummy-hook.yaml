@@ -1,0 +1,9 @@
+apiVersion: tower.ansible.com/v1alpha1
+kind: AnsibleJob
+metadata:
+  generateName: demo-job-001
+  namespace: petclinic
+spec:
+  tower_auth_secret: tower-access
+  job_template_name: Demo Job Template
+

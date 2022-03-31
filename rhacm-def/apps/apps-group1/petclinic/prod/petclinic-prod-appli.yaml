@@ -5,7 +5,7 @@ metadata:
     app: petclinic
     env: prod
   name: petclinic-prod-appli
-  namespace: petclinic-lifecycle
+  namespace: petclinic
 spec:
   componentKinds:
   - group: apps.open-cluster-management.io

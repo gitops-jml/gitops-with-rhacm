@@ -93,7 +93,6 @@ In our use case ( gitops-with-rhacm/deployables/apps/apps-group1/petclinic )
 
 - create the RHACM Custom resources from files\
 `cd gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic/; oc apply -f dev`
-- repeat with *prod* manifests in prod folder
 - change the value of the environment label for the managed cluster, using dev or prod
 - observe the deployments in RHACM console and target clusters, depending of the label value
 - test the routes
@@ -113,18 +112,23 @@ UC5: using Tower for pre or post hooks
 - create a namespace to host the credentials\
 `oc new-project rhacm-credentials`
 - create a crendential for Tower ( https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html/credentials/credentials#creating-a-credential-for-ansible )
-- create a secret in the same namespace as the subscription
+- create a secret in the same namespace as the subscription. You can use `oc apply` with the following content:
 ```
 apiVersion: v1 
 kind: Secret 
 metadata: 
   name: toweraccess 
-  namespace: same-as-subscription 
+  namespace: petclinic
 type: Opaque 
 stringData: 
   token: ansible-tower-api-token 
   host: https://ansible-tower-host-url 
 ```
+- look at the posthook directory under gitops-with-rhacm/deployables/apps/apps-group1/petclinic/prod. This is the definition of the job that will be launched after the deployment of the subscription
+- create the RHACM Custom resources for a new prod application from files\
+`cd gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic/; oc apply -f prod`
+
+
 UC6: Deploy CP4I
 ---------------------------------------
 - create the channel\
