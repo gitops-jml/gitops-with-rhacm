@@ -128,6 +128,9 @@ stringData:
 - create the RHACM Custom resources for a new prod application from files\
 `cd gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic/; oc apply -f prod`
 - change the environment label value from dev to prod on managed cluster
+- observe the ansible job on the topology view
+- you can also check that an ansible job has been created in petclinic namespace
+- you can then see the job execution log in tower
 
 UC6: Deploy CP4I
 ---------------------------------------

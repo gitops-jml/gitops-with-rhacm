@@ -1,0 +1,3 @@
+resources:
+- cp4i-operators-subscription.yaml
+- cp4i-operators-placement-rule.yaml

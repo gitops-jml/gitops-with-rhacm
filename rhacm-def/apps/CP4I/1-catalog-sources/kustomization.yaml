@@ -1,0 +1,3 @@
+resources:
+- catalog-source-subscription.yaml
+- catalog-source-placement-rule.yaml

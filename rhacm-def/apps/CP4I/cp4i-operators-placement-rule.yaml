@@ -7,13 +7,14 @@
         apps.open-cluster-management.io/git-path: deployables/apps/CP4I/operators/apic
         apps.open-cluster-management.io/git-branch: main
       labels:
-        app: cp4i-operator
+        app: cp4i
+        comp: apic
     spec:
       channel: rhacm-channels/cp4i-channel
       placement:
         placementRef:
           kind: PlacementRule
-          name: cp4i-placement-rule
+          name: cp4i-apic-operator-placement-rule.yaml
       overrides:
       - clusterName: "/"
         clusterOverrides:
