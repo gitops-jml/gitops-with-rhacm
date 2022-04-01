@@ -134,12 +134,10 @@ stringData:
 
 UC6: Deploy CP4I
 ---------------------------------------
-- create the channel\
-`oc apply -k  rhacm-def/apps/CP4I`
-- create the RHACM custo resources for operators\
-`oc apply -k  rhacm-def/apps/CP4I/operators`
-- create the RHACM custo resources for operators\
-`oc apply -k  rhacm-def/apps/CP4I/instances`
+- create the RHACM custom resources for catalog\
+`oc apply -k   rhacm-def/apps/CP4I/1-catalog-sources`
+- create the RHACM custom resources for operators\
+`oc apply -k  rhacm-def/apps/CP4I/2-operators/`
 
 
 
