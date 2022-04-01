@@ -13,7 +13,7 @@
       placement:
         placementRef:
           kind: PlacementRule
-          name: cp4i-operators-placement-rule.yaml
+          name: cp4i-operators-placement-rule
       overrides:
       - clusterName: "/"
         clusterOverrides:
