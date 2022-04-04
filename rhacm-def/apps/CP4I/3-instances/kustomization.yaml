@@ -1,0 +1,3 @@
+resources:
+- cp4i-instances-subscription.yaml
+- cp4i-instances-placement-rule.yaml
