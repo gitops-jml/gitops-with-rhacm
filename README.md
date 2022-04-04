@@ -138,6 +138,8 @@ UC6: Deploy CP4I
 `oc apply -k   rhacm-def/apps/CP4I/1-catalog-sources`
 - create the RHACM custom resources for operators\
 `oc apply -k  rhacm-def/apps/CP4I/2-operators/`
+- create the RHACM custom resources for instances\
+`oc apply -k  rhacm-def/apps/CP4I/3-instances/`
 
 
 
