@@ -14,8 +14,8 @@
         placementRef:
           kind: PlacementRule
           name: cp4i-instances-placement-rule
-#      overrides:
-#      - clusterName: "/"
-#        clusterOverrides:
-#        - path: "metadata.namespace"
-#          value: apic
+      overrides:
+      - clusterName: "/"
+        clusterOverrides:
+        - path: "metadata.namespace"
+          value: cp4i
