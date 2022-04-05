@@ -1,47 +1,59 @@
-apiVersion: analytics.apiconnect.ibm.com/v1beta1
-kind: AnalyticsCluster
+apiVersion: management.apiconnect.ibm.com/v1beta1
+kind: ManagementCluster
 metadata:
-  name: analytics
-  labels: 
-    app.kubernetes.io/instance: analytics
+  name: management
+  labels:  
+    app.kubernetes.io/instance: management
     app.kubernetes.io/managed-by: ibm-apiconnect
-    app.kubernetes.io/name: analytics
+    app.kubernetes.io/name: management
   namespace: ibm-apic
 spec:
-  version: 10.0.1.4-ifix2-eus
-  license:
-    accept: true
-    use: nonproduction
-  profile: n1xc4.m16
+  version: 10.0.1.5-ifix3-eus
 #  imagePullSecrets:
 #  - pull-secret
   imageRegistry: cp.icr.io/cp/apic
+  profile: n1xc2.m16
+  portal:
+    admin:
+      secretName: portal-admin-client
+  analytics:
+    client:
+      secretName: analytics-client-client
+    ingestion:
+      secretName: analytics-ingestion-client
+  gateway:
+    client:
+      secretName: gateway-client-client
+  cloudManagerEndpoint:
+    annotations:
+      certmanager.k8s.io/issuer: ingress-issuer
+    hosts: 
+    - name: cm.wr.apps.managed.cp.fyre.ibm.com
+      secretName: cm-endpoint
+  apiManagerEndpoint:
+    annotations:
+      certmanager.k8s.io/issuer: ingress-issuer
+    hosts: 
+    - name: apim.wr.apps.managed.cp.fyre.ibm.com
+      secretName: apim-endpoint
+  platformAPIEndpoint:
+    annotations:
+      certmanager.k8s.io/issuer: ingress-issuer
+    hosts: 
+    - name: api.wr.apps.managed.cp.fyre.ibm.com
+      secretName: api-endpoint
+  consumerAPIEndpoint:
+    annotations:
+      certmanager.k8s.io/issuer: ingress-issuer
+    hosts: 
+    - name: consumer.wr.apps.managed.cp.fyre.ibm.com
+      secretName: consumer-endpoint
+  databaseVolumeClaimTemplate:
+    storageClassName: thin
   microServiceSecurity: certManager
   certManagerIssuer:
     name: selfsigning-issuer
     kind: Issuer
-  client:
-    endpoint: 
-      annotations:
-        certmanager.k8s.io/issuer: ingress-issuer
-      hosts:
-      - name: ac.wr.apps.managed.cp.fyre.ibm.com
-        secretName: analytics-ac-endpoint
-    clientSubjectDN: CN=analytics-client-client,O=cert-manager
-  ingestion:
-    endpoint:
-      annotations:
-        certmanager.k8s.io/issuer: ingress-issuer
-      hosts: 
-      - name: ai.wr.apps.managed.cp.fyre.ibm.com
-        secretName: analytics-ai-endpoint
-    clientSubjectDN: CN=analytics-ingestion-client,O=cert-manager
-  storage:
-    data:
-      volumeClaimTemplate:
-        storageClassName: thin
-        volumeSize: 200Gi
-    master:
-      volumeClaimTemplate:
-        storageClassName: thin
-        volumeSize: 10Gi
+  license:
+    accept: true
+    use: nonproduction

@@ -1,0 +1,47 @@
+apiVersion: analytics.apiconnect.ibm.com/v1beta1
+kind: AnalyticsCluster
+metadata:
+  name: analytics
+  labels: 
+    app.kubernetes.io/instance: analytics
+    app.kubernetes.io/managed-by: ibm-apiconnect
+    app.kubernetes.io/name: analytics
+  namespace: ibm-apic
+spec:
+  version: 10.0.1.4-ifix2-eus
+  license:
+    accept: true
+    use: nonproduction
+  profile: n1xc4.m16
+#  imagePullSecrets:
+#  - pull-secret
+  imageRegistry: cp.icr.io/cp/apic
+  microServiceSecurity: certManager
+  certManagerIssuer:
+    name: selfsigning-issuer
+    kind: Issuer
+  client:
+    endpoint: 
+      annotations:
+        certmanager.k8s.io/issuer: ingress-issuer
+      hosts:
+      - name: ac.wr.apps.managed.cp.fyre.ibm.com
+        secretName: analytics-ac-endpoint
+    clientSubjectDN: CN=analytics-client-client,O=cert-manager
+  ingestion:
+    endpoint:
+      annotations:
+        certmanager.k8s.io/issuer: ingress-issuer
+      hosts: 
+      - name: ai.wr.apps.managed.cp.fyre.ibm.com
+        secretName: analytics-ai-endpoint
+    clientSubjectDN: CN=analytics-ingestion-client,O=cert-manager
+  storage:
+    data:
+      volumeClaimTemplate:
+        storageClassName: thin
+        volumeSize: 200Gi
+    master:
+      volumeClaimTemplate:
+        storageClassName: thin
+        volumeSize: 10Gi
