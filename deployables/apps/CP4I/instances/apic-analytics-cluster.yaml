@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: analytics
   namespace: ibm-apic
 spec:
-  version: 10.0.1.4-ifix2-eus
+  version: 10.0.4.0-ifix2
   license:
     accept: true
     use: nonproduction
@@ -25,7 +25,7 @@ spec:
       annotations:
         certmanager.k8s.io/issuer: ingress-issuer
       hosts:
-      - name: ac.wr.apps.managed.cp.fyre.ibm.com
+      - name: ac.apps.managed.cp.fyre.ibm.com
         secretName: analytics-ac-endpoint
     clientSubjectDN: CN=analytics-client-client,O=cert-manager
   ingestion:
@@ -33,7 +33,7 @@ spec:
       annotations:
         certmanager.k8s.io/issuer: ingress-issuer
       hosts: 
-      - name: ai.wr.apps.managed.cp.fyre.ibm.com
+      - name: ai.apps.managed.cp.fyre.ibm.com
         secretName: analytics-ai-endpoint
     clientSubjectDN: CN=analytics-ingestion-client,O=cert-manager
   storage:
