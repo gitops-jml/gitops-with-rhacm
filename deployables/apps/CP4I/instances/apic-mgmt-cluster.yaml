@@ -8,11 +8,11 @@ metadata:
     app.kubernetes.io/name: management
   namespace: ibm-apic
 spec:
-  version: 10.0.1.5-ifix3-eus
+  version: 10.0.4.0-ifix2
 #  imagePullSecrets:
 #  - pull-secret
   imageRegistry: cp.icr.io/cp/apic
-  profile: n1xc2.m16
+  profile: n1xc4.m16
   portal:
     admin:
       secretName: portal-admin-client
@@ -28,25 +28,25 @@ spec:
     annotations:
       certmanager.k8s.io/issuer: ingress-issuer
     hosts: 
-    - name: cm.wr.apps.managed.cp.fyre.ibm.com
+    - name: cm.apps.managed.cp.fyre.ibm.com
       secretName: cm-endpoint
   apiManagerEndpoint:
     annotations:
       certmanager.k8s.io/issuer: ingress-issuer
     hosts: 
-    - name: apim.wr.apps.managed.cp.fyre.ibm.com
+    - name: apim.apps.managed.cp.fyre.ibm.com
       secretName: apim-endpoint
   platformAPIEndpoint:
     annotations:
       certmanager.k8s.io/issuer: ingress-issuer
     hosts: 
-    - name: api.wr.apps.managed.cp.fyre.ibm.com
+    - name: api.apps.managed.cp.fyre.ibm.com
       secretName: api-endpoint
   consumerAPIEndpoint:
     annotations:
       certmanager.k8s.io/issuer: ingress-issuer
     hosts: 
-    - name: consumer.wr.apps.managed.cp.fyre.ibm.com
+    - name: consumer.apps.managed.cp.fyre.ibm.com
       secretName: consumer-endpoint
   databaseVolumeClaimTemplate:
     storageClassName: thin
