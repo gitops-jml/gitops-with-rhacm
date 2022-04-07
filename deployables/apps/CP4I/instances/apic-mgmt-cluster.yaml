@@ -13,7 +13,8 @@ spec:
 #  imagePullSecrets:
 #  - pull-secret
   imageRegistry: cp.icr.io/cp/apic
-  profile: n1xc7.m48
+#  profile: n1xc7.m48
+  profile: n1xc2.m16
   portal:
     admin:
       secretName: portal-admin-client
@@ -58,3 +59,4 @@ spec:
   license:
     accept: true
     use: nonproduction
+    license: L-RJON-C7BJ42
