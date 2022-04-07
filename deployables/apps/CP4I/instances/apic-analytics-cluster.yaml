@@ -39,7 +39,7 @@ spec:
   storage:
     data:
       volumeClaimTemplate:
-        storageClassName: thin
+        storageClassName: rook-ceph-block
         volumeSize: 200Gi
     master:
       volumeClaimTemplate:
