@@ -1,4 +1,4 @@
 resources:
 - cp4i-cs-operand-requests-subscription.yaml
-- cp4i-instances-subscription.yaml
+#- cp4i-instances-subscription.yaml
 - cp4i-instances-placement-rule.yaml
