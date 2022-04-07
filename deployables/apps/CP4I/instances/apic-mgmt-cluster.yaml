@@ -8,11 +8,12 @@ metadata:
     app.kubernetes.io/name: management
   namespace: ibm-apic
 spec:
-  version: 10.0.4.0-ifix2
+#  version: 10.0.4.0-ifix2
+#  version: 10.0.4.0
 #  imagePullSecrets:
 #  - pull-secret
   imageRegistry: cp.icr.io/cp/apic
-  profile: n1xc4.m16
+  profile: n1xc7.m48
   portal:
     admin:
       secretName: portal-admin-client
