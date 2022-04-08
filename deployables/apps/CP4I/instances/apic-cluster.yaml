@@ -12,12 +12,12 @@ spec:
     accept: true
     use: "nonproduction"
     license: L-RJON-C7BJ42
-  profile: "n1xc10.m48"
-  version: "10.0.4.0-ifix2"
+  profile: "n3xc4.m16"
+  version: "10.0.1.4-eus"
   storageClassName: "rook-ceph-block"
   management:
     testAndMonitor:
-      enabled: true
+      enabled: false
   gateway:      
     tokenManagementService:
       enabled: true
