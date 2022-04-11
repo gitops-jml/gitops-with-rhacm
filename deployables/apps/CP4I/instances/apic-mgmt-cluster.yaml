@@ -14,7 +14,7 @@ spec:
 #  - pull-secret
   imageRegistry: cp.icr.io/cp/apic
 #  profile: n1xc7.m48
-  profile: n3xc4.m16
+  profile: n1xc4.m16
   portal:
     admin:
       secretName: portal-admin-client
