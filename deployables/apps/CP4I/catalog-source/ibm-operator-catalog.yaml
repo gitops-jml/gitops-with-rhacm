@@ -5,7 +5,7 @@ metadata:
   namespace: openshift-marketplace
 spec:
   displayName: IBM Operator Catalog
-  image: 'icr.io/cpopen/ibm-operator-catalog:latest'
+  image: 'icr.io/cpopen/ibm-operator-catalog:v2.1.4-eus'
   publisher: IBM
   sourceType: grpc
   updateStrategy:
