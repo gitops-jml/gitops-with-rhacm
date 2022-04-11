@@ -1,4 +1,4 @@
 resources:
-#- apic-mgmt-cluster.yaml
-#- apic-analytics-cluster.yaml
-- apic-cluster.yaml
+- apic-mgmt-cluster.yaml
+- apic-analytics-cluster.yaml
+#- apic-cluster.yaml

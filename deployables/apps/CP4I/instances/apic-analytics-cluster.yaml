@@ -8,11 +8,11 @@ metadata:
     app.kubernetes.io/name: analytics
   namespace: ibm-apic
 spec:
-  version: 10.0.4.0-ifix2
+  version: 10.0.1.4-eus
   license:
     accept: true
     use: nonproduction
-  profile: n1xc4.m16
+  profile: n3xc4.m16
 #  imagePullSecrets:
 #  - pull-secret
   imageRegistry: cp.icr.io/cp/apic
