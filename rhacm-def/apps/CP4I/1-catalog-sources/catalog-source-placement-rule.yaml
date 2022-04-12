@@ -9,4 +9,4 @@ spec:
   clusterSelector:
     matchLabels:
       cp4i: "yes"
-  clusterReplicas: 1
+  clusterReplicas: 2
