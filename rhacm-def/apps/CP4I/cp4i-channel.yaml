@@ -3,6 +3,8 @@ kind: Channel
 metadata:
   name: cp4i-channel
   namespace: rhacm-channels
+  annotations:
+  apps.open-cluster-management.io/reconcile-rate: high
 spec:
   type: Git
   pathname: https://github.com/gitops-jml/gitops-with-rhacm.git
