@@ -11,8 +11,8 @@ spec:
   license:
     accept: true
     use: "nonproduction"
-    license: L-RJON-C7BJ42
-  profile: "n3xc4.m16"
+    license: L-RJON-C7BHW9
+  profile: "n1xc2.m16"
   version: "10.0.4.0-ifix2-339"
   storageClassName: "rook-ceph-block"
   management:
