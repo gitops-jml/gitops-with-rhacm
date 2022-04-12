@@ -4,7 +4,7 @@ metadata:
   name: ibm-apiconnect
   namespace: cp4i
 spec:
-  channel: "10.0.4.0-ifix2-339"
+  channel: 10.0.1.4-eus
   name: ibm-apiconnect
   source: ibm-operator-catalog
   sourceNamespace: openshift-marketplace
