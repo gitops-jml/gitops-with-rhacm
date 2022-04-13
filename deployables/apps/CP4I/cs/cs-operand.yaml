@@ -13,8 +13,8 @@ spec:
         - name: ibm-ingress-nginx-operator
         - name: ibm-commonui-operator
         - name: ibm-platform-api-operator
-#        - name: ibm-elastic-stack-operator
-#        - name: ibm-monitoring-exporters-operator
-#        - name: ibm-monitoring-prometheusext-operator
-#        - name: ibm-monitoring-grafana-operator
+        - name: ibm-elastic-stack-operator
+        - name: ibm-monitoring-exporters-operator
+        - name: ibm-monitoring-prometheusext-operator
+        - name: ibm-monitoring-grafana-operator
       registry: common-service
