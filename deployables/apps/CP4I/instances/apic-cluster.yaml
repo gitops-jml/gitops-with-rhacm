@@ -17,7 +17,7 @@ spec:
   storageClassName: "rook-ceph-block"
   management:
     testAndMonitor:
-      enabled: false
+      enabled: true
   gateway:      
     tokenManagementService:
       enabled: true
