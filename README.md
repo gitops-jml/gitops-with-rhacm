@@ -105,6 +105,19 @@ To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/s
 
 We will encrypt our Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
 
+example: 
+- on server side: install teh operator from operator.hub
+
+- on client side, install CLI\
+`wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.13.1/kubeseal-linux-amd64 -O kubeseal
+sudo install -m 755 kubeseal /usr/local/bin/kubeseal`
+- create your secret\
+`oc create secret generic mysecret --from-literal user=me --from-literal password=my-password --dry-run=client -o yaml | kubeseal --controller-namespace rhacm-channels --controller-name sealed-secret-controler-sealed-secrets --format yaml - | oc apply -f -`
+- check the secret\
+`oc extract secret/mysecret`
+
+You should see a file named user with "me" as content and a file named password with "my-password"
+
 
 UC5: using Tower for pre or post hooks
 ---------------------------------------
