@@ -105,7 +105,7 @@ To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/s
 
 We will encrypt our Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
 
-example: a secret to host ibm-entitlement for docker images in cp.icr.io repository
+example: 
 - on server side: install teh operator from operator.hub
 
 - on client side, install CLI\
