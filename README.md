@@ -110,11 +110,12 @@ example: a secret to host ibm-entitlement for docker images in cp.icr.io reposit
 
 - on client side, install CLI\
 `wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.13.1/kubeseal-linux-amd64 -O kubeseal
-sudo install -m 755 kubeseal /usr/lèocal/bin/kubeseal`
+sudo install -m 755 kubeseal /usr/local/bin/kubeseal`
 - create your secret\
 `oc create secret generic mysecret --from-literal user=me --from-literal password=my-password --dry-run=client -o yaml | kubeseal --controller-namespace rhacm-channels --controller-name sealed-secret-controler-sealed-secrets --format yaml - | oc apply -f -`
 - check the secret\
 `oc extract secret/mysecret`
+
 You should see a file named user with "me" as content and a file named password with "my-password"
 
 
