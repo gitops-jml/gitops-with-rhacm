@@ -36,14 +36,14 @@ repository architecture:
 Cluster Hub namespaces
 ----------------------
 - opencluster-management: created by default for RHACM
-- rhacm-channels        : to be created to host the channel(s) definition
-- one namespace         : to be created for each application definitions
+- one namespace to host the channel(s) definition (rhacm-channels)
+- one namespace for each application definitions
 
 Pre-req to play with this workshop
 ==================================
-You need two clusters:
+You need two OCP clusters:
 - one as the hub cluster which will host RHACM,
-- the other as a managed cluster to deploy the applications
+- the other as a managed cluster to deploy the applications to
 
 Execute the following steps on the Hub Cluster:
 - fork and clone the current repository on your laptop\
@@ -51,7 +51,9 @@ Execute the following steps on the Hub Cluster:
 - install RHACM: RHACM is available as an operator in the OperatorHub ;  Complete the installation by creating a multiclusterhub instance
 - find the route to RHACM using the OCP console NEtworking/routes from open-cluster-management project
 - open the RHACM console by clicking on the route
-- import the managed cluster into the Hub Cluster using the button under Infrastructure/Clusters and running the generated command on the managed cluster
+- import the managed cluster into the Hub Cluster using the button under Infrastructure>>Clusters and running the generated command on the managed cluster
+
+
 - on the Hub Cluster, create a namespace to hold the channels definitions (TO BE AUTOMATED)\
 `oc new-project rhacm-channels`
 - (optional) on the Hub Cluster, create a secret to access to the git repository\
@@ -75,7 +77,7 @@ This folder contains the definitions for a kubernetes deployment and a service (
 - create a namespace to host the custom resources definitions for the application
 `oc new-project petclinic`
 - create the RHACM Custom resources for app1 from files\
-`cd gitops-with-rhacm/rhacm-def/apps/apps-group1; oc apply -f petclinic`
+`cd ; oc apply -f gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic`
 
 - watch the resources creation from the RHACM console : as the placement rule is looking for a cluster with an app and an environment labels that it can't find yet, the application is not deployed\
 ![Image](./images/petclinic1.jpg)
