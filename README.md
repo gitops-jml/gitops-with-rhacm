@@ -44,12 +44,15 @@ You need two clusters:
 - the other as a managed cluster to deploy the applications
 
 execute the following steps:
-- fork and clone the current repository on your laptop
+- fork and clone the current repository on your laptop\
+`cd ; git clone https://github.com/gitops-jml/gitops-with-rhacm.git`
 - install RHACM on the Hub Cluster : RHACM is available as an operator in the OperatorHub ;  Complete the installation by creating a multiclusterhub instance
-- import the managed cluster into the Hub Cluster
+- find the route to RHACM using the OCP console NEtworking/routes from open-cluster-management project
+- open the RHACM console by clicking on the route
+- import the managed cluster into the Hub Cluster using the button under Infrastructure/Clusters and running the generated command on the managed cluster
 - on the Hub Cluster, create a namespace to hold the channels definitions (TO BE AUTOMATED)\
 `oc new-project rhacm-channels`
-- on the Hub Cluster, create a secret to access to the git repository\
+- (optional) on the Hub Cluster, create a secret to access to the git repository\
 `oc create secret generic git-secret --from-literal=user=xxxxxxx --from-literal=accessToken=xxxxxxxx -n rhacm-channels`
 
 Simple use cases
@@ -97,29 +100,7 @@ In our use case ( gitops-with-rhacm/deployables/apps/apps-group1/petclinic )
 - observe the deployments in RHACM console and target clusters, depending of the label value
 - test the routes
 
-UC4: managing secrets (sealed secrets)
--------------------------------------
-For private Git repositories, we need a secret to hold the credentials (user/accessToken). As secrets are not encrypted, it's impossible to store these secrets in a repository.
-
-To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/sealed-secrets )
-
-We will encrypt our Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
-
-example: 
-- on server side: install teh operator from operator.hub
-
-- on client side, install CLI\
-`wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.13.1/kubeseal-linux-amd64 -O kubeseal
-sudo install -m 755 kubeseal /usr/local/bin/kubeseal`
-- create your secret\
-`oc create secret generic mysecret --from-literal user=me --from-literal password=my-password --dry-run=client -o yaml | kubeseal --controller-namespace rhacm-channels --controller-name sealed-secret-controler-sealed-secrets --format yaml - | oc apply -f -`
-- check the secret\
-`oc extract secret/mysecret`
-
-You should see a file named user with "me" as content and a file named password with "my-password"
-
-
-UC5: using Tower for pre or post hooks
+UC4: using Tower for pre or post hooks
 ---------------------------------------
 - install Ansible Automation Platform Resource Operator
 - create a namespace to host the credentials\
@@ -145,14 +126,41 @@ stringData:
 - you can also check that an ansible job has been created in petclinic namespace
 - you can then see the job execution log in tower
 
+UC5: managing secrets (sealed secrets)
+-------------------------------------
+For private Git repositories, we need a secret to hold the credentials (user/accessToken). As secrets are not encrypted, it's impossible to store these secrets in a repository.
+
+To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/sealed-secrets )
+
+We will encrypt our Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
+
+example: 
+- on server side: install teh operator from operator.hub
+
+- on client side, install CLI\
+`wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.13.1/kubeseal-linux-amd64 -O kubeseal
+sudo install -m 755 kubeseal /usr/local/bin/kubeseal`
+- create your secret\
+`oc create secret generic mysecret --from-literal user=me --from-literal password=my-password --dry-run=client -o yaml | kubeseal --controller-namespace rhacm-channels --controller-name sealed-secret-controler-sealed-secrets --format yaml - | oc apply -f -`
+- check the secret\
+`oc extract secret/mysecret`
+
+You should see a file named user with "me" as content and a file named password with "my-password"
+
+
 UC6: Deploy CP4I
 ---------------------------------------
-- create the RHACM custom resources for catalog\
-`oc apply -k   rhacm-def/apps/CP4I/1-catalog-sources`
-- create the RHACM custom resources for operators\
-`oc apply -k  rhacm-def/apps/CP4I/2-operators/`
-- create the RHACM custom resources for instances\
-`oc apply -k  rhacm-def/apps/CP4I/3-instances/`
+- use the same method as UC5 to create a sealed secret to host the IBM entitlement key to pull CP4I images from cp.icr.io\
+`cd ; oc create secret docker-registry ibm-entitlement-key secret --docker-server=cp.icr.io --docker-username=cp --docker-password=your-entitlement-key --dry-run=client -o yaml | kubeseal --controller-namespace rhacm-channels --controller-name sealed-secret-controler-sealed-secrets --format yaml > gitops-with-rhacm/rhacm-def/apps/CP4I/ibm-entitlement-key.yaml`
 
+NOTE: your key can be found at https://myibm.ibm.com/products-services/containerlibrary 
+
+- create the RHACM top leve resources\`oc apply -k rhacm-def/apps/CP4I/`
+- create the RHACM custom resources for catalog\
+`oc apply -k rhacm-def/apps/CP4I/1-catalog-sources`
+- create the RHACM custom resources for operators\
+`oc apply -k rhacm-def/apps/CP4I/2-operators/`
+- create the RHACM custom resources for instances\
+`oc apply -k rhacm-def/apps/CP4I/3-instances/`
 
 
