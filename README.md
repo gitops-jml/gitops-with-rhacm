@@ -52,12 +52,6 @@ Execute the following steps on the Hub Cluster:
 - open the RHACM console by clicking on the route
 - import the managed cluster into the Hub Cluster using the button under Infrastructure>>Clusters and running the generated command on the managed cluster
 
-
-- on the Hub Cluster, create a namespace to hold the channels definitions (TO BE AUTOMATED)\
-`oc new-project rhacm-channels`
-- (optional) on the Hub Cluster, create a secret to access to the git repository\
-`oc create secret generic git-secret --from-literal=user=xxxxxxx --from-literal=accessToken=xxxxxxxx -n rhacm-channels`
-
 Simple use cases
 =====================
 
@@ -96,7 +90,7 @@ In our use case ( gitops-with-rhacm/deployables/apps/apps-group1/petclinic )
 - the **dev** and **prod** folders define the specificities (the routes in our case) and a kustomization.yaml file describing the base location and the list of specifics
 
 - create the RHACM Custom resources from files\
-`cd gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic/; oc apply -f dev`
+`cd ; oc apply -k gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic/dev`
 - change the value of the environment label for the managed cluster, using dev or prod
 - observe the deployments in RHACM console and target clusters, depending of the label value
 - test the routes
