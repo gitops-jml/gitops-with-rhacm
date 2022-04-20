@@ -135,7 +135,7 @@ To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/s
 We will encrypt our Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
 
 example: 
-- on server side: install teh operator from operator.hub
+- on server side: install the operator from operator.hub
 
 - on client side, install CLI\
 `wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.13.1/kubeseal-linux-amd64 -O kubeseal
@@ -150,12 +150,12 @@ You should see a file named user with "me" as content and a file named password 
 
 UC6: Deploy CP4I
 ---------------------------------------
-- use the same method as UC5 to create a sealed secret to host the IBM entitlement key to pull CP4I images from cp.icr.io\
+- use the same method as UC5 to create a sealed secret to host the IBM entitlement key mandatory to pull CP4I images from cp.icr.io\
 `cd ; oc create secret docker-registry ibm-entitlement-key secret --docker-server=cp.icr.io --docker-username=cp --docker-password=your-entitlement-key --dry-run=client -o yaml | kubeseal --controller-namespace rhacm-channels --controller-name sealed-secret-controler-sealed-secrets --format yaml > gitops-with-rhacm/rhacm-def/apps/CP4I/ibm-entitlement-key.yaml`
 
 NOTE: your key can be found at https://myibm.ibm.com/products-services/containerlibrary 
 
-- create the RHACM top leve resources\`oc apply -k rhacm-def/apps/CP4I/`
+- create the RHACM top level resources (namespace, channel, application)\`oc apply -k rhacm-def/apps/CP4I/`
 - create the RHACM custom resources for catalog\
 `oc apply -k rhacm-def/apps/CP4I/1-catalog-sources`
 - create the RHACM custom resources for operators\
