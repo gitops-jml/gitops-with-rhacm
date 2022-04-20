@@ -1,4 +1,5 @@
 resources:
+- cp4i-channel-namespace.yaml
 - ibm-entitlement-key.yaml
 - cp4i-namespace.yaml
 - cp4i-channel.yaml

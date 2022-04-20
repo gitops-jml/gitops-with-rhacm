@@ -25,17 +25,19 @@ Architecture
 ============
 repository architecture:
 ------------------------
-![Image](./images/tree.jpg)
+  - rhacm-def folder contains the descriptions of the various RHACM Custom resources
+
 ![Image](./images/tree2.jpg)
 
-  - rhacm-def folder contains the descriptions of the various RHACM Custom resources
   - deployables folder contains everything needed to deploy applications
+
+![Image](./images/tree.jpg)
 
 Cluster Hub namespaces
 ----------------------
 - opencluster-management: created by default for RHACM
-- rhacm-channels: to be created to host the channel(s) definition
-- one namespace to be created for each application definitions
+- rhacm-channels        : to be created to host the channel(s) definition
+- one namespace         : to be created for each application definitions
 
 Pre-req to play with this workshop
 ==================================
@@ -43,10 +45,10 @@ You need two clusters:
 - one as the hub cluster which will host RHACM,
 - the other as a managed cluster to deploy the applications
 
-execute the following steps:
+Execute the following steps on the Hub Cluster:
 - fork and clone the current repository on your laptop\
 `cd ; git clone https://github.com/gitops-jml/gitops-with-rhacm.git`
-- install RHACM on the Hub Cluster : RHACM is available as an operator in the OperatorHub ;  Complete the installation by creating a multiclusterhub instance
+- install RHACM: RHACM is available as an operator in the OperatorHub ;  Complete the installation by creating a multiclusterhub instance
 - find the route to RHACM using the OCP console NEtworking/routes from open-cluster-management project
 - open the RHACM console by clicking on the route
 - import the managed cluster into the Hub Cluster using the button under Infrastructure/Clusters and running the generated command on the managed cluster
@@ -135,13 +137,13 @@ To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/s
 We will encrypt our Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
 
 example: 
-- on server side: install the operator from operator.hub
+- on server side: install the operator from operator.hub in kube-system project
 
 - on client side, install CLI\
 `wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.13.1/kubeseal-linux-amd64 -O kubeseal
 sudo install -m 755 kubeseal /usr/local/bin/kubeseal`
 - create your secret\
-`oc create secret generic mysecret --from-literal user=me --from-literal password=my-password --dry-run=client -o yaml | kubeseal --controller-namespace rhacm-channels --controller-name sealed-secret-controler-sealed-secrets --format yaml - | oc apply -f -`
+`oc create secret generic mysecret --from-literal user=me --from-literal password=my-password --dry-run=client -o yaml | kubeseal --controller-name sealed-secret-controler-sealed-secrets --format yaml - | oc apply -f -`
 - check the secret\
 `oc extract secret/mysecret`
 
@@ -151,7 +153,7 @@ You should see a file named user with "me" as content and a file named password 
 UC6: Deploy CP4I
 ---------------------------------------
 - use the same method as UC5 to create a sealed secret to host the IBM entitlement key mandatory to pull CP4I images from cp.icr.io\
-`cd ; oc create secret docker-registry ibm-entitlement-key secret --docker-server=cp.icr.io --docker-username=cp --docker-password=your-entitlement-key --dry-run=client -o yaml | kubeseal --controller-namespace rhacm-channels --controller-name sealed-secret-controler-sealed-secrets --format yaml > gitops-with-rhacm/rhacm-def/apps/CP4I/ibm-entitlement-key.yaml`
+`cd ; oc create secret docker-registry ibm-entitlement-key secret --docker-server=cp.icr.io --docker-username=cp --docker-password=your-entitlement-key --dry-run=client -o yaml | kubeseal --controller-name sealed-secret-controler-sealed-secrets --format yaml > gitops-with-rhacm/rhacm-def/apps/CP4I/ibm-entitlement-key.yaml`
 
 NOTE: your key can be found at https://myibm.ibm.com/products-services/containerlibrary 
 
