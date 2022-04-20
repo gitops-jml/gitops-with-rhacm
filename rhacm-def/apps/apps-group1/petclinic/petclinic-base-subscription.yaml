@@ -16,8 +16,3 @@
         placementRef:
           kind: PlacementRule
           name: petclinic-base-placement-rule
-#      overrides:
-#      - clusterName: "/"
-#        clusterOverrides:
-#        - path: "metadata.namespace"
-#          value: petclinic-base
