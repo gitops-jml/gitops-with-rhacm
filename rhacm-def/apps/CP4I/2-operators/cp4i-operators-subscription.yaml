@@ -18,4 +18,4 @@
       - clusterName: "/"
         clusterOverrides:
         - path: "metadata.namespace"
-          value: "openshift-operators""
+          value: "openshift-operators"
