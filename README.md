@@ -151,12 +151,12 @@ UC6: Deploy CP4I
 
 NOTE: your key can be found at https://myibm.ibm.com/products-services/containerlibrary 
 
-- create the RHACM top level resources (namespace, channel, application)\`cd ; oc apply -k rhacm-def/rhacm-def/apps/CP4I/`
+- create the RHACM top level resources (namespace, channel, application)\`cd ; oc apply -k  gitops-with-rhacm/rhacm-def/apps/CP4I/`
 - create the RHACM custom resources for catalog\
-`cd ; oc apply -k rhacm-def/apps/CP4I/1-catalog-sources`
+`cd ; oc apply -k  gitops-with-rhacm/rhacm-def/apps/CP4I/1-catalog-sources`
 - create the RHACM custom resources for operators\
-`cd ; oc apply -k rhacm-def/apps/CP4I/2-operators/`
+`cd ; oc apply -k  gitops-with-rhacm/rhacm-def/apps/CP4I/2-operators/`
 - create the RHACM custom resources for instances\
-`cd ; oc apply -k rhacm-def/apps/CP4I/3-instances/`
+`cd ; oc apply -k  gitops-with-rhacm/rhacm-def/apps/CP4I/3-instances/`
 
 
