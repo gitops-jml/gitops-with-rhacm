@@ -130,7 +130,7 @@ To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/s
 We will encrypt our Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
 
 example: 
-- on rhacm OCP cluster, install the operator from operator.hub
+- on rhacm OCP cluster, install the operator yaml file https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.17.5/controller.yaml 
 
 - on client side, install CLI\
 ```
@@ -138,17 +138,16 @@ wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.13.1/ku
 sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 ```
 - create your secret\
-`oc create secret generic mysecret --from-literal user=me --from-literal password=my-password --dry-run=client -o yaml | kubeseal --controller-name sealed-secret-controler-sealed-secrets --format yaml - | oc apply -f -`
+` oc create secret generic mysecret -n cp4i --from-literal user=me --from-literal password=my-password --dry-run=client -o yaml | kubeseal --controller-namespace kube-system --controller-name sealed-secrets-controller --format yaml - | oc apply -f -`
 - check the secret\
 `oc extract secret/mysecret`
 
 You should see a file named user with "me" as content and a file named password with "my-password"
 
-
 UC6: Deploy CP4I
 ---------------------------------------
 - use the same method as UC5 to create a sealed secret to host the IBM entitlement key mandatory to pull CP4I images from cp.icr.io\
-`cd ; oc create secret docker-registry ibm-entitlement-key secret --docker-server=cp.icr.io --docker-username=cp --docker-password=your-entitlement-key --dry-run=client -o yaml | kubeseal --controller-name sealed-secret-controler-sealed-secrets --format yaml > gitops-with-rhacm/rhacm-def/apps/CP4I/ibm-entitlement-key.yaml`
+`cd ; oc create secret docker-registry ibm-entitlement-key --docker-server=cp.icr.io --docker-username=cp --docker-password=your-entitlement-key --dry-run=client -o yaml | kubeseal --controller-name sealed-secrets-controller --format yaml > gitops-with-rhacm/deployables/apps/CP4I/instancesibm-entitlement-key.yaml`
 
 NOTE: your key can be found at https://myibm.ibm.com/products-services/containerlibrary 
 
