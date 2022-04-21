@@ -46,7 +46,6 @@ You need two OCP clusters:
 
 Execute the following steps on the Hub Cluster:
 - fork and clone the current repository on your laptop\
-`cd ; git clone https://github.com/gitops-jml/gitops-with-rhacm.git`
 - install RHACM: RHACM is available as an operator in the OperatorHub ;  Complete the installation by creating a multiclusterhub instance
 - find the route to RHACM using the OCP console NEtworking/routes from open-cluster-management project
 - open the RHACM console by clicking on the route
@@ -146,6 +145,8 @@ You should see a file named user with "me" as content and a file named password 
 
 UC6: Deploy CP4I
 ---------------------------------------
+
+NOTE: you need a block storage class on the mananged cluster
 - use the same method as UC5 to create a sealed secret to host the IBM entitlement key mandatory to pull CP4I images from cp.icr.io\
 `cd ; oc create secret docker-registry ibm-entitlement-key --docker-server=cp.icr.io --docker-username=cp --docker-password=your-entitlement-key --dry-run=client -o yaml | kubeseal --controller-name sealed-secrets-controller --format yaml > gitops-with-rhacm/deployables/apps/CP4I/instancesibm-entitlement-key.yaml`
 
