@@ -2,7 +2,8 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: ibm-apiconnect
-  namespace: cp4i
+#  namespace: cp4i
+namespace: openshift-operators
 spec:
   channel: v2.1.4-eus
 #  channel: v2.5
