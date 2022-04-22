@@ -14,8 +14,8 @@ spec:
     placementRef:
       kind: PlacementRule
       name: cp4i-instances-placement-rule
-  overrides:
-  - clusterName: "/"
-    clusterOverrides:
-    - path: "metadata.namespace"
-      value: ibm-common-services
+#  overrides:
+#   - clusterName: "/"
+#     clusterOverrides:
+#    - path: "metadata.namespace"
+#      value: ibm-common-services

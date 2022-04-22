@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/instance: apiconnect
     app.kubernetes.io/managed-by: ibm-apiconnect
     app.kubernetes.io/name: apicluster
-  namespace: cp4i
+  namespace: ibm-apic
 spec:
   license:
     accept: true

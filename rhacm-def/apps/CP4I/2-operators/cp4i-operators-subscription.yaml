@@ -15,7 +15,7 @@
           kind: PlacementRule
           name: cp4i-operators-placement-rule
       overrides:
-      - clusterName: "/"
-        clusterOverrides:
-        - path: "metadata.namespace"
-          value: "openshift-operators"
+#      - clusterName: "/"
+#        clusterOverrides:
+#        - path: "metadata.namespace"
+#          value: "openshift-operators"
