@@ -137,7 +137,7 @@ wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.13.1/ku
 sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 ```
 - create your secret\
-` oc create secret generic mysecret -n cp4i --from-literal user=me --from-literal password=my-password --dry-run=client -o yaml | kubeseal --controller-namespace kube-system --controller-name sealed-secrets-controller --format yaml - | oc apply -f -`
+` oc create secret generic mysecret -n cp4i --from-literal user=me --from-literal password=my-password --dry-run=client -o yaml | kubeseal  --controller-namespace kube-system --controller-namespace kube-system --controller-name sealed-secrets-controller --format yaml - | oc apply -f -`
 - check the secret\
 `oc extract secret/mysecret`
 
