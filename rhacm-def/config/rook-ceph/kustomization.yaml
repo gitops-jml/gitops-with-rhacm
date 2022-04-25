@@ -4,3 +4,4 @@ resources:
   - rook-ceph-channel.yaml
   - rook-ceph-placement-rule.yaml
   - rook-ceph-subscription.yaml
+  - rook-ceph-application.yaml
