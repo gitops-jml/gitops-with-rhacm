@@ -1,0 +1,11 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: rook-ceph-placement-rule
+  namespace: rook-ceph
+  labels:
+    app: rook-ceph
+spec:
+  clusterSelector:
+    matchLabels:
+      storage: "rook-ceph"

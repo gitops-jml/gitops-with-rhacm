@@ -1,0 +1,4 @@
+- rook-ceph-channel-namespace.yaml
+- rook-ceph-channel.yaml
+- rook-ceph-placement-rule.yaml
+- rook-ceph-subscription.yaml

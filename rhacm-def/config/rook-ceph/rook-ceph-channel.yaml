@@ -1,0 +1,12 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  name: rook-ceph-channel
+  namespace: rook-ceph-channels
+  annotations:
+  apps.open-cluster-management.io/reconcile-rate: high
+spec:
+  type: Git
+  pathname: https://github.com/gitops-jml/gitops-with-rhacm.git
+#  secretRef:
+#    name: git-secret
