@@ -1,4 +1,6 @@
-- rook-ceph-channel-namespace.yaml
-- rook-ceph-channel.yaml
-- rook-ceph-placement-rule.yaml
-- rook-ceph-subscription.yaml
+resources:
+  - rook-ceph-channel-namespace.yaml
+  - rook-ceph-namespace.yaml
+  - rook-ceph-channel.yaml
+  - rook-ceph-placement-rule.yaml
+  - rook-ceph-subscription.yaml

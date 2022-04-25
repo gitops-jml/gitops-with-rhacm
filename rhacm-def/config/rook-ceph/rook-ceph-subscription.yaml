@@ -1,8 +1,8 @@
     apiVersion: apps.open-cluster-management.io/v1
     kind: Subscription
     metadata:
-      name: ibm-operator-catalog-subscription
-      namespace: rook-ceph-subscription
+      name: rook-ceph-subscription
+      namespace: rook-ceph
       annotations:
         apps.open-cluster-management.io/git-path: deployables/config/rook-ceph
         apps.open-cluster-management.io/git-branch: main
