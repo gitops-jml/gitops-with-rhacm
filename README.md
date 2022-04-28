@@ -41,15 +41,20 @@ Cluster Hub namespaces
 Pre-req to play with this workshop
 ==================================
 You need two OCP clusters:
-- one as the hub cluster which will host RHACM,
-- the other as a managed cluster to deploy the applications to
+- The first one will be the hub cluster and host RHACM,
+- the other one will be the managed cluster and host the applications
 
-Execute the following steps on the Hub Cluster:
-- fork and clone the current repository on your laptop\
+For UC4, you need an Ansible Tower instance
+
+To be able to use openshift cli (oc) you need a bastion with connexion to each of the clusters
+
+To install the hub cluster, execute the following steps on the Hub Cluster:
 - install RHACM: RHACM is available as an operator in the OperatorHub ;  Complete the installation by creating a multiclusterhub instance
-- find the route to RHACM using the OCP console NEtworking/routes from open-cluster-management project
+- find the route to RHACM using the OCP console Networking>>routes from open-cluster-management project
 - open the RHACM console by clicking on the route
-- import the managed cluster into the Hub Cluster using the button under Infrastructure>>Clusters and running the generated command on the managed cluster
+- generate the command to import the managed cluster into the Hub Cluster: use the button under Infrastructure>>Clusters
+- copy the generated command
+- run this command on the bastion after logging to the managed cluster
 
 Simple use cases
 =====================
@@ -61,7 +66,7 @@ TBD
 UC2: Deploy a simple application (petclinic)
 --------------------------------------------
 - look at gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic folder\
-This folder contains the RHACM definitions for the application
+This folder contains the RHACM Custom Resources definitions for the application
 
 - look at gitops-with-rhacm/deployables/apps/apps-group1/petclinic/base\
 This folder contains the definitions for a kubernetes deployment and a service (you can ignore the kustomization.yaml for the moment)
@@ -74,7 +79,6 @@ This folder contains the definitions for a kubernetes deployment and a service (
 - label the managed cluster with `app=petclinic` and `environment=base`
 - observe the deployment on the RHACM console and on the target cluster
 ![Image](./images/petclinic2.jpg)\
-
 
 - try to scale the application up and observe that RHACM synchronizes the application back to the stage defined in Git
 
@@ -109,29 +113,30 @@ metadata:
   namespace: petclinic
 type: Opaque 
 stringData: 
-  token: ansible-tower-api-token 
-  host: https://ansible-tower-host-url 
+  token: you-ansible-tower-api-token 
+  host: https://your-ansible-tower-host-url 
 ```
 - look at the posthook directory under gitops-with-rhacm/deployables/apps/apps-group1/petclinic/prod. This is the definition of the job that will be launched after the deployment of the subscription
 - create the RHACM Custom resources for a new prod application from files\
 `cd gitops-with-rhacm/rhacm-def/apps/apps-group1/petclinic/; oc apply -f prod`
-- change the environment label value from dev to prod on managed cluster
+- change the environment label value from dev to prod on managed cluster console
 - observe the ansible job on the topology view
-- you can also check that an ansible job has been created in petclinic namespace
+- you can also check that an ansible job custom resource has been created in petclinic namespace
 - you can then see the job execution log in tower
 
 UC5: managing secrets (sealed secrets)
 -------------------------------------
-For private Git repositories, we need a secret to hold the credentials (user/accessToken). As secrets are not encrypted, it's impossible to store these secrets in a repository.
+For RHACM, everything, including secrets definition must be in Git. As secrets are not encrypted, it's impossible to store these secrets as is in a Git repository.
 
 To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/sealed-secrets )
 
 We will encrypt our Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
 
 example: 
-- on rhacm OCP cluster, install the operator yaml file https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.17.5/controller.yaml 
+- on the rhacm OCP cluster, install the controler from yaml file \
+`https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.17.5/controller.yaml `
 
-- on client side, install CLI\
+- on the client side, install CLI\
 ```
 wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.13.1/kubeseal-linux-amd64 -O kubeseal
 sudo install -m 755 kubeseal /usr/local/bin/kubeseal
@@ -143,16 +148,17 @@ sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 
 You should see a file named user with "me" as content and a file named password with "my-password"
 
-UC6: Deploy CP4I
+UC6: Deploy IBM Apic
 ---------------------------------------
 
-NOTE: you need a block storage class on the mananged cluster
+NOTE: you need a block storage class on the managed cluster
 - use the same method as UC5 to create a sealed secret to host the IBM entitlement key mandatory to pull CP4I images from cp.icr.io\
 `cd ; oc create secret docker-registry ibm-entitlement-key --docker-server=cp.icr.io --docker-username=cp --docker-password=your-entitlement-key --dry-run=client -o yaml | kubeseal --controller-name sealed-secrets-controller --format yaml > gitops-with-rhacm/deployables/apps/CP4I/instancesibm-entitlement-key.yaml`
 
 NOTE: your key can be found at https://myibm.ibm.com/products-services/containerlibrary 
 
-- create the RHACM top level resources (namespace, channel, application)\`cd ; oc apply -k  gitops-with-rhacm/rhacm-def/apps/CP4I/`
+- create the RHACM top level resources (namespace, channel, application)\
+`cd ; oc apply -k  gitops-with-rhacm/rhacm-def/apps/CP4I/`
 - create the RHACM custom resources for catalog\
 `cd ; oc apply -k  gitops-with-rhacm/rhacm-def/apps/CP4I/1-catalog-sources`
 - create the RHACM custom resources for operators\
