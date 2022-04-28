@@ -11,7 +11,7 @@
         env: dev
         group: group1
     spec:
-      channel: petclinic/petclinic-channel
+      channel: rhacm-channels/petclinic-channel
       placement:
         placementRef:
           kind: PlacementRule
