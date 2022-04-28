@@ -11,6 +11,6 @@ spec:
     metadata:
       creationTimestamp: null
       name: ibm-entitlement-key
-      namespace: kube-system
+      namespace: ibm-apic
     type: kubernetes.io/dockerconfigjson
 
