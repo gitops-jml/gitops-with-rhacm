@@ -133,8 +133,8 @@ To avoid this, we can use **sealed secrets** ( https://github.com/bitnami-labs/s
 We will encrypt our Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
 
 example: 
-- on the rhacm OCP cluster, install the controler from yaml file \
-`https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.17.5/controller.yaml `
+- on the rhacm OCP cluster, install the controler from yaml file in kube-system project\
+`oc apply -f https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.17.5/controller.yaml `
 
 - on the client side, install CLI\
 ```
