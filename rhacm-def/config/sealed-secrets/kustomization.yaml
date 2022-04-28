@@ -1,0 +1,6 @@
+resources:
+  - sealed-secrets-channel-namespace.yaml
+  - sealed-secrets-channel.yaml
+  - sealed-secrets-placement-rule.yaml
+  - sealed-secrets-subscription.yaml
+  - sealed-secrets-application.yaml
