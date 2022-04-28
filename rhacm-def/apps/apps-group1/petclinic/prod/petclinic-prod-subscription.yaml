@@ -10,7 +10,7 @@
         app: petclinic
         env: prod
     spec:
-      channel: rhacm-channels/petclinic-channel
+      channel: petclinic/petclinic-channel
       placement:
         placementRef:
           kind: PlacementRule
